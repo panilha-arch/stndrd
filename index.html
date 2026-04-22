@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PANILHA · STNDRD</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0A;
+    --bg-2:#121212;
+    --card:#161616;
+    --card-2:#1E1E1E;
+    --line:#2A2A2A;
+    --line-soft:#222;
+    --text:#F5F5F5;
+    --mute:#8A8A8A;
+    --dim:#5A5A5A;
+    --gold:#D4A574;
+    --gold-dim:#8B6F47;
+    --gold-bg:rgba(212,165,116,0.08);
+    --red:#E63946;
+    --green:#4ADE80;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--bg);color:var(--text)}
+  body{
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    font-size:14px;
+    line-height:1.5;
+    min-height:100vh;
+  }
+  .wrap{max-width:1400px;margin:0 auto;padding:0}
+
+  /* NAV */
+  .nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 32px;
+    border-bottom:1px solid var(--line);
+    background:var(--bg);
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  .nav-left{display:flex;align-items:center;gap:36px}
+  .logo{
+    font-family:'Inter',sans-serif;
+    font-weight:900;
+    font-size:16px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+  }
+  .logo span{color:var(--gold)}
+  .nav-menu{display:flex;gap:28px;list-style:none}
+  .nav-menu a{
+    color:var(--mute);
+    text-decoration:none;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    font-weight:500;
+    transition:color .2s;
+  }
+  .nav-menu a.active,.nav-menu a:hover{color:var(--text)}
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--mute);
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .live{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:4px 10px;
+    background:var(--red);
+    color:white;
+    font-weight:700;
+    font-size:10px;
+    letter-spacing:2px;
+  }
+  .live::before{
+    content:"";
+    width:6px;height:6px;
+    background:white;
+    border-radius:50%;
+    animation:pulse 1.5s infinite;
+  }
+  @keyframes pulse{50%{opacity:.4}}
+
+  /* CONTENT */
+  .content{padding:40px 32px 60px}
+
+  /* BANNER */
+  .banner{
+    position:relative;
+    background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 50%,#1a1a1a 100%);
+    border:1px solid var(--line);
+    padding:40px;
+    margin-bottom:32px;
+    overflow:hidden;
+  }
+  .banner::before{
+    content:"";
+    position:absolute;
+    top:-50%;
+    right:-20%;
+    width:600px;height:600px;
+    background:radial-gradient(circle,var(--gold-bg) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .banner-grid{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:48px;
+    align-items:end;
+    position:relative;
+  }
+  .banner-tag{
+    display:inline-block;
+    padding:4px 12px;
+    background:var(--gold);
+    color:#000;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .banner-title{
+    font-size:54px;
+    font-weight:900;
+    letter-spacing:-2px;
+    line-height:1;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .banner-title span{color:var(--gold)}
+  .banner-descr{
+    font-size:15px;
+    color:var(--mute);
+    max-width:600px;
+    line-height:1.6;
+  }
+  .banner-stats{
+    display:flex;
+    gap:40px;
+    padding-left:40px;
+    border-left:1px solid var(--line);
+  }
+  .bs{text-align:right}
+  .bs-lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--mute);
+    margin-bottom:4px;
+  }
+  .bs-val{
+    font-size:36px;
+    font-weight:800;
+    letter-spacing:-1px;
+    line-height:1;
+  }
+  .bs-val span{color:var(--gold);font-size:16px;font-weight:500;margin-left:2px}
+
+  /* MANIFESTO — novo bloco */
+  .manifesto{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    background:var(--card);
+    border:1px solid var(--line);
+    margin-bottom:32px;
+  }
+  .mani-item{
+    padding:24px 28px;
+    border-right:1px solid var(--line);
+  }
+  .mani-item:last-child{border-right:none}
+  .mani-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+  }
+  .mani-badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--gold);
+    letter-spacing:2px;
+    font-weight:700;
+    padding:3px 8px;
+    background:var(--gold-bg);
+    border:1px solid var(--gold-dim);
+  }
+  .mani-title{
+    font-size:18px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+  }
+  .mani-text{
+    font-size:13px;
+    color:var(--mute);
+    line-height:1.6;
+  }
+  .mani-text b{color:var(--text);font-weight:600}
+
+  /* SECTION HEAD */
+  .sh{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin:48px 0 20px;
+  }
+  .sh-left{display:flex;align-items:baseline;gap:16px}
+  .sh-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--gold);
+    font-weight:600;
+    letter-spacing:2px;
+  }
+  .sh-title{
+    font-size:24px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+  }
+  .sh-right{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--mute);
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+  }
+
+  /* VITALS CARD GRID */
+  .vitals{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:12px;
+  }
+  .vit{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:20px;
+    transition:border-color .2s;
+  }
+  .vit:hover{border-color:var(--gold-dim)}
+  .vit-lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--mute);
+    margin-bottom:8px;
+  }
+  .vit-val{
+    font-size:40px;
+    font-weight:800;
+    letter-spacing:-1.5px;
+    line-height:1;
+    color:var(--text);
+  }
+  .vit-val small{
+    font-size:14px;
+    color:var(--mute);
+    font-weight:400;
+    margin-left:3px;
+  }
+  .vit-meta{
+    margin-top:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--gold);
+    font-weight:500;
+  }
+  .vit-meta.good{color:var(--green)}
+
+  /* RACES CARD */
+  .races{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .race{
+    background:var(--card);
+    border:1px solid var(--line);
+    overflow:hidden;
+    position:relative;
+    transition:border-color .2s;
+  }
+  .race:hover{border-color:var(--gold)}
+  .race::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:4px;
+    background:var(--gold);
+  }
+  .race-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:24px 28px;
+    border-bottom:1px solid var(--line);
+  }
+  .race-badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .race-dist{
+    font-size:72px;
+    font-weight:900;
+    letter-spacing:-3px;
+    line-height:0.85;
+  }
+  .race-dist small{
+    font-size:22px;
+    color:var(--mute);
+    font-weight:400;
+  }
+  .race-date{
+    text-align:right;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--mute);
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+  }
+  .race-date b{
+    display:block;
+    font-size:22px;
+    color:var(--text);
+    font-weight:800;
+    margin-top:6px;
+    font-family:'Inter',sans-serif;
+    letter-spacing:-0.5px;
+  }
+  .race-targets{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+  }
+  .trg{
+    padding:20px 24px;
+    border-right:1px solid var(--line);
+    text-align:center;
+  }
+  .trg:last-child{border-right:none}
+  .trg.alvo{background:var(--gold-bg)}
+  .trg-lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--mute);
+    margin-bottom:6px;
+  }
+  .trg.alvo .trg-lbl{color:var(--gold);font-weight:700}
+  .trg-time{
+    font-size:30px;
+    font-weight:800;
+    letter-spacing:-1px;
+    line-height:1;
+  }
+  .trg.alvo .trg-time{color:var(--gold)}
+  .trg-pace{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--mute);
+    margin-top:4px;
+  }
+
+  /* TRANSFORMATION */
+  .transform{
+    background:var(--card);
+    border:1px solid var(--line);
+    display:grid;
+    grid-template-columns:1fr 2fr 1fr;
+    overflow:hidden;
+  }
+  .tf-side{
+    padding:32px;
+    position:relative;
+  }
+  .tf-side.after{
+    background:linear-gradient(135deg,rgba(212,165,116,0.06) 0%,transparent 100%);
+    border-left:1px solid var(--gold-dim);
+  }
+  .tf-lbl{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    padding:3px 8px;
+    background:var(--card-2);
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--mute);
+    margin-bottom:16px;
+  }
+  .tf-side.after .tf-lbl{background:var(--gold);color:#000;font-weight:700}
+  .tf-weight{
+    font-size:80px;
+    font-weight:900;
+    letter-spacing:-3px;
+    line-height:0.9;
+  }
+  .tf-weight small{
+    font-size:22px;
+    color:var(--mute);
+    font-weight:400;
+    letter-spacing:0;
+  }
+  .tf-bf{
+    font-size:24px;
+    font-weight:700;
+    color:var(--mute);
+    margin-top:4px;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+  }
+  .tf-side.after .tf-bf{color:var(--gold)}
+  .tf-detail{
+    margin-top:24px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .tf-detail div{
+    display:flex;
+    justify-content:space-between;
+    color:var(--mute);
+  }
+  .tf-detail div span:last-child{color:var(--text);font-weight:600}
+  .tf-detail .delta{color:var(--red)}
+  .tf-detail .delta-good{color:var(--green)}
+
+  .tf-middle{
+    background:var(--bg-2);
+    padding:32px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border-left:1px solid var(--line);
+    border-right:1px solid var(--line);
+  }
+  .tf-middle h3{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:16px;
+    font-weight:600;
+  }
+  .tf-goals{display:flex;flex-direction:column;gap:14px}
+  .tf-goal{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 18px;
+    background:var(--card);
+    border:1px solid var(--line);
+  }
+  .tf-goal-label{
+    font-size:13px;
+    color:var(--mute);
+  }
+  .tf-goal-value{
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;
+    font-weight:700;
+    color:var(--gold);
+  }
+
+  /* RULES — regras sagradas */
+  .rules{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+  }
+  .rule{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:24px;
+    position:relative;
+    transition:border-color .2s;
+  }
+  .rule:hover{border-color:var(--gold-dim)}
+  .rule-num{
+    position:absolute;
+    top:14px;right:20px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--dim);
+    letter-spacing:1.5px;
+  }
+  .rule-icon{
+    font-size:13px;
+    color:var(--gold);
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:10px;
+  }
+  .rule-title{
+    font-size:20px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+    line-height:1.1;
+    margin-bottom:8px;
+  }
+  .rule-desc{
+    font-size:12px;
+    color:var(--mute);
+    line-height:1.5;
+  }
+
+  /* RANKS / MILESTONES */
+  .ranks{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+  }
+  .rank{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:24px 22px;
+    position:relative;
+    transition:all .2s;
+  }
+  .rank:hover{border-color:var(--gold-dim)}
+  .rank.pico{
+    background:linear-gradient(180deg,var(--gold-bg) 0%,var(--card) 100%);
+    border-color:var(--gold);
+  }
+  .rank.pico::before{
+    content:"MARCO";
+    position:absolute;
+    top:-9px;
+    right:16px;
+    background:var(--gold);
+    color:#000;
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:2px;
+    padding:3px 8px;
+  }
+  .rank-level{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:4px;
+    font-weight:600;
+  }
+  .rank-month{
+    font-size:14px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+    margin-bottom:16px;
+    color:var(--mute);
+  }
+  .rank.pico .rank-month{color:var(--text)}
+  .rank-weight{
+    font-size:44px;
+    font-weight:900;
+    letter-spacing:-1.5px;
+    line-height:1;
+  }
+  .rank-weight small{font-size:14px;color:var(--mute);font-weight:400}
+  .rank-bf{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--mute);
+    margin-top:6px;
+    font-weight:600;
+  }
+  .rank.pico .rank-bf{color:var(--gold)}
+  .rank-note{
+    font-size:12px;
+    color:var(--mute);
+    margin-top:14px;
+    padding-top:12px;
+    border-top:1px solid var(--line);
+    line-height:1.4;
+  }
+
+  /* JOURNEY */
+  .journey{
+    background:var(--card);
+    border:1px solid var(--line);
+  }
+  .qst{
+    display:grid;
+    grid-template-columns:120px 1fr auto;
+    gap:28px;
+    padding:22px 28px;
+    border-bottom:1px solid var(--line);
+    align-items:center;
+    transition:background .2s;
+  }
+  .qst:hover{background:var(--card-2)}
+  .qst:last-child{border-bottom:none}
+  .qst-when{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--gold);
+    font-weight:600;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .qst.done .qst-when{color:var(--green)}
+  .qst-title{
+    font-size:18px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+    margin-bottom:4px;
+  }
+  .qst-desc{
+    font-size:13px;
+    color:var(--mute);
+    line-height:1.5;
+  }
+  .qst-status{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    padding:5px 10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    font-weight:700;
+    background:var(--card-2);
+    color:var(--mute);
+    border:1px solid var(--line);
+  }
+  .qst.done .qst-status{background:var(--green);color:#000;border-color:var(--green)}
+  .qst.next .qst-status{background:var(--gold);color:#000;border-color:var(--gold)}
+  .qst.next{background:var(--gold-bg)}
+
+  /* ACHIEVEMENTS */
+  .achs{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+  .ach{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:28px;
+    position:relative;
+    transition:border-color .2s;
+  }
+  .ach:hover{border-color:var(--gold-dim)}
+  .ach-num{
+    position:absolute;
+    top:20px;right:28px;
+    font-size:64px;
+    font-weight:900;
+    color:var(--line);
+    line-height:1;
+    letter-spacing:-3px;
+  }
+  .ach-name{
+    font-size:28px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-0.5px;
+    margin-bottom:4px;
+  }
+  .ach-sub{
+    font-size:12px;
+    color:var(--mute);
+    margin-bottom:20px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--line);
+  }
+  .ach-list{list-style:none;padding:0}
+  .ach-list li{
+    padding:10px 0;
+    border-bottom:1px solid var(--line-soft);
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+  }
+  .ach-list li:last-child{border-bottom:none}
+  .ach-list li span:first-child{color:var(--mute)}
+  .ach-list li span:last-child{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--gold);
+    font-weight:700;
+    white-space:nowrap;
+  }
+
+  /* MONITORING */
+  .mon{
+    background:var(--card);
+    border:1px solid var(--line);
+  }
+  .mon-row{
+    display:grid;
+    grid-template-columns:160px 280px 1fr;
+    gap:24px;
+    padding:20px 28px;
+    border-bottom:1px solid var(--line);
+    align-items:center;
+  }
+  .mon-row:last-child{border-bottom:none}
+  .mon-freq{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--gold);
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+  }
+  .mon-what{
+    font-size:16px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+  }
+  .mon-how{font-size:13px;color:var(--mute);line-height:1.5}
+
+  /* ALERTS */
+  .alerts{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+  .alt{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:0;
+  }
+  .alt-head{
+    padding:18px 22px;
+    background:var(--card-2);
+    border-bottom:1px solid var(--line);
+  }
+  .alt-title{
+    font-size:16px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+  }
+  .alt-sub{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--gold);
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-top:4px;
+    font-weight:500;
+  }
+  .alt-body{padding:6px 22px 18px}
+  .alt-body ul{list-style:none;padding:0}
+  .alt-body li{
+    display:flex;
+    justify-content:space-between;
+    padding:12px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-size:13px;
+    gap:12px;
+  }
+  .alt-body li:last-child{border-bottom:none}
+  .alt-body li span:first-child{color:var(--mute)}
+  .alt-body li strong{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--gold);
+    font-weight:700;
+    white-space:nowrap;
+  }
+
+  /* ADD — add em vez de cortar */
+  .adds{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+  }
+  .add{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:22px;
+  }
+  .add-plus{
+    font-size:32px;
+    font-weight:900;
+    color:var(--gold);
+    line-height:1;
+    margin-bottom:8px;
+  }
+  .add-title{
+    font-size:14px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:-0.2px;
+    margin-bottom:6px;
+  }
+  .add-desc{
+    font-size:12px;
+    color:var(--mute);
+    line-height:1.5;
+  }
+
+  /* FOOTER */
+  .foot{
+    margin-top:60px;
+    padding:24px 32px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--dim);
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+  }
+
+  @media (max-width:1000px){
+    .vitals,.races,.ranks,.achs,.alerts,.banner-grid,.manifesto,.rules,.adds{grid-template-columns:1fr}
+    .transform{grid-template-columns:1fr}
+    .banner-stats{border-left:none;border-top:1px solid var(--line);padding:24px 0 0}
+    .qst,.mon-row{grid-template-columns:1fr;gap:8px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-left">
+    <div class="logo">PANILHA<span>·</span>STNDRD</div>
+    <ul class="nav-menu">
+      <li><a href="#" class="active">DASHBOARD</a></li>
+      <li><a href="#rules">REGRAS</a></li>
+      <li><a href="#races">PROVAS</a></li>
+      <li><a href="#transform">TRANSFORM</a></li>
+      <li><a href="#journey">JOURNEY</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <span class="live">LIVE</span>
+    <span>22 abr 2026</span>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="content">
+
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="banner-grid">
+      <div>
+        <div class="banner-tag">HYBRID · CONSTRUÇÃO SUSTENTÁVEL</div>
+        <h1 class="banner-title">Performance Curta.<br><span>Composição Longa.</span></h1>
+        <p class="banner-descr">Duas provas até maio, corpo atlético e seco até agosto — mantido sem regime, sem restrição, sem culpa. Comida livre é parte do plano, não exceção.</p>
+      </div>
+      <div class="banner-stats">
+        <div class="bs">
+          <div class="bs-lbl">Idade</div>
+          <div class="bs-val">37</div>
+        </div>
+        <div class="bs">
+          <div class="bs-lbl">Altura</div>
+          <div class="bs-val">178<span>cm</span></div>
+        </div>
+        <div class="bs">
+          <div class="bs-lbl">FCmáx</div>
+          <div class="bs-val">192</div>
+        </div>
+        <div class="bs">
+          <div class="bs-lbl">VDOT</div>
+          <div class="bs-val">36</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANIFESTO -->
+  <div class="manifesto">
+    <div class="mani-item">
+      <div class="mani-head">
+        <span class="mani-badge">01</span>
+        <span class="mani-title">Por adição</span>
+      </div>
+      <p class="mani-text">Plano não corta alimento. Adiciona <b>água, vegetal, caminhada, sono</b>. O corpo faz o déficit sozinho, sem contabilidade.</p>
+    </div>
+    <div class="mani-item">
+      <div class="mani-head">
+        <span class="mani-badge">02</span>
+        <span class="mani-title">Flexibilidade sagrada</span>
+      </div>
+      <p class="mani-text"><b>Gelato 2×/semana</b> e <b>hambúrguer de sábado</b> são parte do plano. Não pagam com treino, não geram culpa, não entram na conta.</p>
+    </div>
+    <div class="mani-item">
+      <div class="mani-head">
+        <span class="mani-badge">03</span>
+        <span class="mani-title">Longo prazo</span>
+      </div>
+      <p class="mani-text">Meta é o que cabe na vida <b>pra sempre</b>. Visual de 10% BF sustentado > 8% BF sofrido. Sustentabilidade antes de estética.</p>
+    </div>
+  </div>
+
+  <!-- RULES SAGRADAS -->
+  <div class="sh" id="rules">
+    <div class="sh-left">
+      <span class="sh-num">00</span>
+      <span class="sh-title">Regras que não se tocam</span>
+    </div>
+    <span class="sh-right">Não-negociáveis</span>
+  </div>
+
+  <div class="rules">
+    <div class="rule">
+      <div class="rule-num">01</div>
+      <div class="rule-icon">+ FLEX</div>
+      <div class="rule-title">Gelato 2×/sem</div>
+      <div class="rule-desc">Parte do plano. Não é cheat, não é pecado, não paga com corrida. Come e segue.</div>
+    </div>
+    <div class="rule">
+      <div class="rule-num">02</div>
+      <div class="rule-icon">+ FLEX</div>
+      <div class="rule-title">Hambúrguer sábado</div>
+      <div class="rule-desc">Refeição livre fixa. 2 hambúrgueres, sem contar macro, sem compensar. É lei.</div>
+    </div>
+    <div class="rule">
+      <div class="rule-num">03</div>
+      <div class="rule-icon">- RIGIDEZ</div>
+      <div class="rule-title">Sem regime</div>
+      <div class="rule-desc">Zero contagem de kcal no dia a dia. Estrutura da Michelle roda no piloto automático.</div>
+    </div>
+    <div class="rule">
+      <div class="rule-num">04</div>
+      <div class="rule-icon">- BALANÇA</div>
+      <div class="rule-title">Foto > Peso</div>
+      <div class="rule-desc">Peso diário fora. Foto mensal, fita na cintura a cada 2 sem, roupa caindo. Só isso.</div>
+    </div>
+  </div>
+
+  <!-- VITALS -->
+  <div class="sh">
+    <div class="sh-left">
+      <span class="sh-num">01</span>
+      <span class="sh-title">Vitals</span>
+    </div>
+    <span class="sh-right">Atualizado hoje</span>
+  </div>
+
+  <div class="vitals">
+    <div class="vit">
+      <div class="vit-lbl">Peso</div>
+      <div class="vit-val">97<small>kg</small></div>
+      <div class="vit-meta">–2kg em 4 meses</div>
+    </div>
+    <div class="vit">
+      <div class="vit-lbl">Gordura</div>
+      <div class="vit-val">12<small>%</small></div>
+      <div class="vit-meta">→ 10%</div>
+    </div>
+    <div class="vit">
+      <div class="vit-lbl">Massa magra</div>
+      <div class="vit-val">85,4<small>kg</small></div>
+      <div class="vit-meta good">manter +</div>
+    </div>
+    <div class="vit">
+      <div class="vit-lbl">Cintura</div>
+      <div class="vit-val">88<small>cm</small></div>
+      <div class="vit-meta">–4cm</div>
+    </div>
+    <div class="vit">
+      <div class="vit-lbl">Volume corrida</div>
+      <div class="vit-val">21<small>km/sem</small></div>
+      <div class="vit-meta">semana atual</div>
+    </div>
+    <div class="vit">
+      <div class="vit-lbl">Próxima prova</div>
+      <div class="vit-val">4<small>dias</small></div>
+      <div class="vit-meta">5K dom 26/04</div>
+    </div>
+  </div>
+
+  <!-- PROVAS -->
+  <div class="sh" id="races">
+    <div class="sh-left">
+      <span class="sh-num">02</span>
+      <span class="sh-title">Próximas Provas</span>
+    </div>
+    <span class="sh-right">Metas puxadas</span>
+  </div>
+
+  <div class="races">
+
+    <div class="race">
+      <div class="race-top">
+        <div>
+          <div class="race-badge">Event · 5K Road</div>
+          <div class="race-dist">5<small>KM</small></div>
+        </div>
+        <div class="race-date">
+          Domingo
+          <b>26 Abr</b>
+        </div>
+      </div>
+      <div class="race-targets">
+        <div class="trg">
+          <div class="trg-lbl">Seguro</div>
+          <div class="trg-time">29:30</div>
+          <div class="trg-pace">5:54 /km</div>
+        </div>
+        <div class="trg alvo">
+          <div class="trg-lbl">Alvo</div>
+          <div class="trg-time">28:30</div>
+          <div class="trg-pace">5:42 /km</div>
+        </div>
+        <div class="trg">
+          <div class="trg-lbl">Teto</div>
+          <div class="trg-time">27:30</div>
+          <div class="trg-pace">5:30 /km</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="race">
+      <div class="race-top">
+        <div>
+          <div class="race-badge">Event · 10K Road</div>
+          <div class="race-dist">10<small>KM</small></div>
+        </div>
+        <div class="race-date">
+          Domingo
+          <b>17 Mai</b>
+        </div>
+      </div>
+      <div class="race-targets">
+        <div class="trg">
+          <div class="trg-lbl">Seguro</div>
+          <div class="trg-time">65:00</div>
+          <div class="trg-pace">6:30 /km</div>
+        </div>
+        <div class="trg alvo">
+          <div class="trg-lbl">Alvo</div>
+          <div class="trg-time">62:00</div>
+          <div class="trg-pace">6:12 /km</div>
+        </div>
+        <div class="trg">
+          <div class="trg-lbl">Teto</div>
+          <div class="trg-time">59:30</div>
+          <div class="trg-pace">5:57 /km</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TRANSFORMATION -->
+  <div class="sh" id="transform">
+    <div class="sh-left">
+      <span class="sh-num">03</span>
+      <span class="sh-title">Transformation</span>
+    </div>
+    <span class="sh-right">4 meses · sem sofrimento</span>
+  </div>
+
+  <div class="transform">
+    <div class="tf-side">
+      <div class="tf-lbl">Start · Abr</div>
+      <div class="tf-weight">97<small>kg</small></div>
+      <div class="tf-bf">12% BF</div>
+      <div class="tf-detail">
+        <div><span>Magro</span><span>85,4 kg</span></div>
+        <div><span>Gordura</span><span>11,6 kg</span></div>
+        <div><span>Cintura</span><span>~88 cm</span></div>
+      </div>
+    </div>
+
+    <div class="tf-middle">
+      <h3>O que a gente quer</h3>
+      <div class="tf-goals">
+        <div class="tf-goal">
+          <span class="tf-goal-label">Reduzir gordura</span>
+          <span class="tf-goal-value">–2,3 kg</span>
+        </div>
+        <div class="tf-goal">
+          <span class="tf-goal-label">Manter músculo</span>
+          <span class="tf-goal-value">+0,3 kg</span>
+        </div>
+        <div class="tf-goal">
+          <span class="tf-goal-label">Reduzir cintura</span>
+          <span class="tf-goal-value">–4 cm</span>
+        </div>
+        <div class="tf-goal">
+          <span class="tf-goal-label">Performance 10K</span>
+          <span class="tf-goal-value">sub-63</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tf-side after">
+      <div class="tf-lbl">Goal · Ago</div>
+      <div class="tf-weight">95<small>kg</small></div>
+      <div class="tf-bf">10% BF</div>
+      <div class="tf-detail">
+        <div><span>Magro</span><span>85,7 kg <span class="delta-good">+0,3</span></span></div>
+        <div><span>Gordura</span><span>9,3 kg <span class="delta">–2,3</span></span></div>
+        <div><span>Cintura</span><span>84 cm <span class="delta">–4</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RANKS -->
+  <div class="sh">
+    <div class="sh-left">
+      <span class="sh-num">04</span>
+      <span class="sh-title">Evolução Mensal</span>
+    </div>
+    <span class="sh-right">Sem pressão</span>
+  </div>
+
+  <div class="ranks">
+    <div class="rank">
+      <div class="rank-level">LVL 01</div>
+      <div class="rank-month">Abr · Start</div>
+      <div class="rank-weight">97<small>kg</small></div>
+      <div class="rank-bf">12% BF</div>
+      <div class="rank-note">Forte. Abdômen raso sem definição marcada.</div>
+    </div>
+    <div class="rank">
+      <div class="rank-level">LVL 02</div>
+      <div class="rank-month">Mai</div>
+      <div class="rank-weight">96,5<small>kg</small></div>
+      <div class="rank-bf">11,5% BF</div>
+      <div class="rank-note">Linha central começando. Roupa caindo diferente.</div>
+    </div>
+    <div class="rank pico">
+      <div class="rank-level">LVL 03</div>
+      <div class="rank-month">Jun · Visível</div>
+      <div class="rank-weight">96<small>kg</small></div>
+      <div class="rank-bf">11% BF</div>
+      <div class="rank-note">Pessoas começam a notar. Ombro e braço mais marcados.</div>
+    </div>
+    <div class="rank">
+      <div class="rank-level">LVL 04</div>
+      <div class="rank-month">Jul</div>
+      <div class="rank-weight">95,5<small>kg</small></div>
+      <div class="rank-bf">10,5% BF</div>
+      <div class="rank-note">Abdômen parcial aparece. Deltoide separado.</div>
+    </div>
+    <div class="rank pico">
+      <div class="rank-level">LVL 05</div>
+      <div class="rank-month">Ago · Sustentável</div>
+      <div class="rank-weight">95<small>kg</small></div>
+      <div class="rank-bf">10% BF</div>
+      <div class="rank-note">"Grande e seco" visível. Nível que mantém pra sempre.</div>
+    </div>
+  </div>
+
+  <!-- POR ADIÇÃO -->
+  <div class="sh">
+    <div class="sh-left">
+      <span class="sh-num">05</span>
+      <span class="sh-title">Por adição</span>
+    </div>
+    <span class="sh-right">O que você ganha</span>
+  </div>
+
+  <div class="adds">
+    <div class="add">
+      <div class="add-plus">+</div>
+      <div class="add-title">Água antes da refeição</div>
+      <div class="add-desc">500ml antes do almoço e jantar. Saciedade natural, sem contar nada.</div>
+    </div>
+    <div class="add">
+      <div class="add-plus">+</div>
+      <div class="add-title">Vegetal extra</div>
+      <div class="add-desc">Uma porção a mais no almoço. Volume, fibra, saciedade — sem kcal.</div>
+    </div>
+    <div class="add">
+      <div class="add-plus">+</div>
+      <div class="add-title">Caminhada pós-jantar</div>
+      <div class="add-desc">15min três vezes na semana. NEAT que soma o mês inteiro.</div>
+    </div>
+    <div class="add">
+      <div class="add-plus">+</div>
+      <div class="add-title">Uma hora de sono</div>
+      <div class="add-desc">Regula fome, cortisol e recuperação. O ajuste mais forte do plano.</div>
+    </div>
+  </div>
+
+  <!-- JOURNEY -->
+  <div class="sh" id="journey">
+    <div class="sh-left">
+      <span class="sh-num">06</span>
+      <span class="sh-title">Journey</span>
+    </div>
+    <span class="sh-right">7 quests</span>
+  </div>
+
+  <div class="journey">
+
+    <div class="qst done">
+      <div class="qst-when">Mar → Abr 2026</div>
+      <div>
+        <div class="qst-title">Base aeróbica</div>
+        <div class="qst-desc">50 dias, 20 corridas, 145 km. 29 sessões de força. Pace de longão caiu 51s/km sem subir FC.</div>
+      </div>
+      <span class="qst-status">Concluído</span>
+    </div>
+
+    <div class="qst next">
+      <div class="qst-when">26 Abr · prova</div>
+      <div>
+        <div class="qst-title">5K · Alvo sub-29</div>
+        <div class="qst-desc">Teste do preparo atual. Calibra VDOT real e estratégia de pace do 10K.</div>
+      </div>
+      <span class="qst-status">Próximo</span>
+    </div>
+
+    <div class="qst">
+      <div class="qst-when">17 Mai · prova</div>
+      <div>
+        <div class="qst-title">10K · Alvo sub-63</div>
+        <div class="qst-desc">Fim do bloco competitivo. Depois disso, corrida vira apenas parte da semana.</div>
+      </div>
+      <span class="qst-status">Agendado</span>
+    </div>
+
+    <div class="qst">
+      <div class="qst-when">18 Mai → Jun</div>
+      <div>
+        <div class="qst-title">Ajuste natural</div>
+        <div class="qst-desc">Volume de corrida cai pra ~13 km/sem. Estrutura da Michelle continua igual. Adições entram devagar.</div>
+      </div>
+      <span class="qst-status">Bloco</span>
+    </div>
+
+    <div class="qst">
+      <div class="qst-when">Jun · notável</div>
+      <div>
+        <div class="qst-title">Pessoas começam a comentar</div>
+        <div class="qst-desc">96 kg, ~11% BF. Ombro e braço mais marcados. Roupa caindo melhor.</div>
+      </div>
+      <span class="qst-status">Marco</span>
+    </div>
+
+    <div class="qst">
+      <div class="qst-when">Ago · sustentável</div>
+      <div>
+        <div class="qst-title">Grande e seco</div>
+        <div class="qst-desc">95 kg a 10% BF. Abs parcial, deltoides separados. Nível mantido pra sempre.</div>
+      </div>
+      <span class="qst-status">Alvo final</span>
+    </div>
+
+    <div class="qst">
+      <div class="qst-when">Set 2026 → ∞</div>
+      <div>
+        <div class="qst-title">Vida que sustenta</div>
+        <div class="qst-desc">Hambúrguer sábado, gelato meio de semana, treino 4+3, exames em dia. Mesma rotina, por anos.</div>
+      </div>
+      <span class="qst-status">Permanente</span>
+    </div>
+
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="sh">
+    <div class="sh-left">
+      <span class="sh-num">07</span>
+      <span class="sh-title">Pilares</span>
+    </div>
+    <span class="sh-right">Os 3 eixos</span>
+  </div>
+
+  <div class="achs">
+
+    <div class="ach">
+      <div class="ach-num">01</div>
+      <div class="ach-name">Corrida</div>
+      <div class="ach-sub">Performance até 17/05 · condicionamento depois</div>
+      <ul class="ach-list">
+        <li><span>Fase competitiva</span><span>~20 km/sem</span></li>
+        <li><span>Fase seguinte</span><span>~13 km/sem</span></li>
+        <li><span>Sessões</span><span>3×/sem</span></li>
+        <li><span>Z2 real (FC)</span><span>≤ 148 bpm</span></li>
+        <li><span>Cadência alvo</span><span>170 /pé</span></li>
+      </ul>
+    </div>
+
+    <div class="ach">
+      <div class="ach-num">02</div>
+      <div class="ach-name">Força</div>
+      <div class="ach-sub">Principal ferramenta de composição</div>
+      <ul class="ach-list">
+        <li><span>Frequência</span><span>4×/sem</span></li>
+        <li><span>Duração sessão</span><span>60–75 min</span></li>
+        <li><span>Divisão pós 17/05</span><span>L · P · Pl · Omb</span></li>
+        <li><span>Compostos</span><span>6–8 reps</span></li>
+        <li><span>Acessórios</span><span>10–15 reps</span></li>
+      </ul>
+    </div>
+
+    <div class="ach">
+      <div class="ach-num">03</div>
+      <div class="ach-name">Comida</div>
+      <div class="ach-sub">Estrutura Michelle + flexibilidade sagrada</div>
+      <ul class="ach-list">
+        <li><span>Feijão-com-arroz</span><span>piloto automático</span></li>
+        <li><span>Gelato</span><span>2×/sem livre</span></li>
+        <li><span>Hambúrguer</span><span>sábado fixo</span></li>
+        <li><span>Proteína alvo</span><span>≥ 200 g/dia</span></li>
+        <li><span>Kcal contados</span><span>nunca</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- MONITORING -->
+  <div class="sh">
+    <div class="sh-left">
+      <span class="sh-num">08</span>
+      <span class="sh-title">Tracking</span>
+    </div>
+    <span class="sh-right">Sem obsessão</span>
+  </div>
+
+  <div class="mon">
+    <div class="mon-row">
+      <div class="mon-freq">Mensal</div>
+      <div class="mon-what">Foto 4 ângulos</div>
+      <div class="mon-how">Mesmo horário, mesma luz, manhã em jejum. Compara com o mês anterior. Principal indicador.</div>
+    </div>
+    <div class="mon-row">
+      <div class="mon-freq">Quinzenal</div>
+      <div class="mon-what">Fita na cintura</div>
+      <div class="mon-how">Umbigo. Um número só. Sem balança, sem escala — é o metric mais honesto sem gatilho.</div>
+    </div>
+    <div class="mon-row">
+      <div class="mon-freq">Quando lembrar</div>
+      <div class="mon-what">Roupa caindo</div>
+      <div class="mon-how">Calça da cintura é o melhor termômetro. Camisa esticando no ombro e braço também conta.</div>
+    </div>
+    <div class="mon-row">
+      <div class="mon-freq">Mensal</div>
+      <div class="mon-what">Exames completos</div>
+      <div class="mon-how">Lipidograma, hepático, renal, hematócrito, ferritina, testo, E2. Inegociável no contexto atual.</div>
+    </div>
+    <div class="mon-row">
+      <div class="mon-freq">Diário sutil</div>
+      <div class="mon-what">Bem-estar</div>
+      <div class="mon-how">Sono, humor, energia, libido. Se qualquer um piora 2 sem seguidas, plano ajusta — independente do que a fita diz.</div>
+    </div>
+  </div>
+
+  <!-- ALERTS -->
+  <div class="sh">
+    <div class="sh-left">
+      <span class="sh-num">09</span>
+      <span class="sh-title">Alerts</span>
+    </div>
+    <span class="sh-right">Quando reagir</span>
+  </div>
+
+  <div class="alerts">
+
+    <div class="alt">
+      <div class="alt-head">
+        <div class="alt-title">Nada mudando</div>
+        <div class="alt-sub">4+ sem sem progresso</div>
+      </div>
+      <div class="alt-body">
+        <ul>
+          <li><span>Cintura parada</span><strong>+ 1 caminhada</strong></li>
+          <li><span>Força travando</span><strong>+ 1h sono</strong></li>
+          <li><span>Sem sensação</span><strong>revisar Michelle</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="alt">
+      <div class="alt-head">
+        <div class="alt-title">Pausa pro médico</div>
+        <div class="alt-sub">Prioridade absoluta</div>
+      </div>
+      <div class="alt-body">
+        <ul>
+          <li><span>PA em jejum</span><strong>&gt; 140/90</strong></li>
+          <li><span>Hematócrito</span><strong>&gt; 52%</strong></li>
+          <li><span>Dor no peito</span><strong>PARAR</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="alt">
+      <div class="alt-head">
+        <div class="alt-title">Mente pesando</div>
+        <div class="alt-sub">Volta do gatilho</div>
+      </div>
+      <div class="alt-body">
+        <ul>
+          <li><span>Culpa com comida</span><strong>stop plano</strong></li>
+          <li><span>Obsessão com foto</span><strong>pausar tracking</strong></li>
+          <li><span>Corrida virar castigo</span><strong>reavaliar tudo</strong></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="foot">
+  <div>STNDRD · Ed. 02 · Construção sustentável</div>
+  <div>@panilha · Manaus AM · 2026</div>
+</div>
+
+</body>
+</html>
