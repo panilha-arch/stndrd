@@ -888,6 +888,86 @@
     font-style:italic;
   }
 
+  /* DIET TIMELINE */
+  .dtl-wrap{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:0;
+    margin-top:16px;
+  }
+  .dtl-head{
+    padding:20px 24px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .dtl-head-title{
+    font-size:16px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+  }
+  .dtl-head-sub{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--gold);
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    padding:4px 10px;
+    background:var(--gold-bg);
+    border:1px solid var(--gold-dim);
+    font-weight:700;
+  }
+  .dtl-row{
+    display:grid;
+    grid-template-columns:130px 200px 1fr auto;
+    gap:20px;
+    padding:16px 24px;
+    border-bottom:1px solid var(--line-soft);
+    align-items:center;
+  }
+  .dtl-row:last-child{border-bottom:none}
+  .dtl-row.prova{background:var(--gold-bg)}
+  .dtl-date{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--gold);
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .dtl-row:not(.prova):not(.checkpoint) .dtl-date{color:var(--mute)}
+  .dtl-event{
+    font-size:13px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.3px;
+  }
+  .dtl-change{
+    font-size:12px;
+    color:var(--mute);
+    line-height:1.45;
+  }
+  .dtl-change b{color:var(--text);font-weight:600}
+  .dtl-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    padding:4px 8px;
+    border:1px solid var(--line);
+    background:var(--card-2);
+    color:var(--mute);
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    font-weight:700;
+    white-space:nowrap;
+  }
+  .dtl-tag.ok{border-color:var(--green);color:var(--green)}
+  .dtl-tag.prova{border-color:var(--gold);background:var(--gold);color:#000}
+  .dtl-tag.taper{border-color:var(--gold-dim);color:var(--gold)}
+
   /* MONITORING */
   .mon{
     background:var(--card);
@@ -1133,6 +1213,14 @@
     .day-off-hero{border-right:none;border-bottom:1px solid var(--line);padding:22px 20px}
     .day-off-title{font-size:36px}
     .day-off-body{grid-template-columns:1fr;gap:14px;padding:20px}
+    .dtl-row{grid-template-columns:1fr;gap:6px;padding:14px 20px}
+    .dtl-date{font-size:10px}
+    .dtl-event{font-size:13px}
+    .dtl-change{font-size:11px}
+    .dtl-tag{justify-self:start;font-size:8px;padding:3px 7px}
+    .dtl-head{padding:16px 20px}
+    .dtl-head-title{font-size:14px}
+    .dtl-head-sub{font-size:9px}
     .day-head{padding:16px 18px}
     .day-title{font-size:17px}
     .day-tag{font-size:8px}
@@ -1955,6 +2043,70 @@
         <ul class="meal-items">
           <li>170ml iogurte zero açúcar</li>
         </ul>
+      </div>
+    </div>
+
+    <!-- TIMELINE DAS MUDANÇAS — card em largura completa -->
+    <div class="day-off" style="background:var(--card)">
+      <div class="dtl-head">
+        <div class="dtl-head-title">Datas-chave da dieta · 4 meses</div>
+        <div class="dtl-head-sub">Estrutura estável · só ajustes pontuais</div>
+      </div>
+
+      <div class="dtl-row taper">
+        <div class="dtl-date">24–25 Abr</div>
+        <div class="dtl-event">Taper 5K</div>
+        <div class="dtl-change"><b>+50g de carbo</b> na sex e sáb. Arroz/massa reforçado no almoço e jantar. Hidratação agressiva.</div>
+        <div class="dtl-tag taper">Ajuste</div>
+      </div>
+
+      <div class="dtl-row prova">
+        <div class="dtl-date">26 Abr · Dom</div>
+        <div class="dtl-event">🏁 Prova 5K</div>
+        <div class="dtl-change">Café-prova <b>2h antes</b>: pão + mel + café. Gel opcional 10min antes. Hidratação pré e pós.</div>
+        <div class="dtl-tag prova">Prova</div>
+      </div>
+
+      <div class="dtl-row">
+        <div class="dtl-date">27 Abr → 14 Mai</div>
+        <div class="dtl-event">Bloco competitivo</div>
+        <div class="dtl-change"><b>Estrutura igual à atual.</b> Nada muda na dieta da Michelle. Rotina segue.</div>
+        <div class="dtl-tag ok">Sem mudança</div>
+      </div>
+
+      <div class="dtl-row taper">
+        <div class="dtl-date">15–16 Mai</div>
+        <div class="dtl-event">Taper 10K</div>
+        <div class="dtl-change"><b>+60g de carbo</b> na sex e sáb. Carbo-load mais forte que o 5K. Gel testado no longão anterior.</div>
+        <div class="dtl-tag taper">Ajuste</div>
+      </div>
+
+      <div class="dtl-row prova">
+        <div class="dtl-date">17 Mai · Dom</div>
+        <div class="dtl-event">🏁 Prova 10K</div>
+        <div class="dtl-change">Café 2h antes. <b>Gel a cada 30min</b> durante. Liquidz + água estratégicos.</div>
+        <div class="dtl-tag prova">Prova</div>
+      </div>
+
+      <div class="dtl-row">
+        <div class="dtl-date">18 Mai → 31 Mai</div>
+        <div class="dtl-event">Transição</div>
+        <div class="dtl-change">Volume de corrida cai pra ~13km/sem. <b>Porções de carbo nos dias de "só corrida" caem sozinhas</b> — já tá prescrito por tipo de dia. Sem corte manual.</div>
+        <div class="dtl-tag ok">Automático</div>
+      </div>
+
+      <div class="dtl-row checkpoint">
+        <div class="dtl-date">01 Jun</div>
+        <div class="dtl-event">Checkpoint mensal</div>
+        <div class="dtl-change">Revisão com a <b>Michelle</b>: foto, fita cintura, bioimpedância se tiver. Ajustes finos se necessário.</div>
+        <div class="dtl-tag">Revisão</div>
+      </div>
+
+      <div class="dtl-row">
+        <div class="dtl-date">Mensal · ∞</div>
+        <div class="dtl-event">Ajuste fino</div>
+        <div class="dtl-change">A cada mês: foto + fita. Se estagnou 4 sem, conversa com Michelle — <b>nunca corta por conta própria</b>.</div>
+        <div class="dtl-tag">Rotina</div>
       </div>
     </div>
 
