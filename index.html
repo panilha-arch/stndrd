@@ -2,7 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="STNDRD">
 <title>PANILHA · STNDRD</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -842,11 +846,137 @@
     letter-spacing:1.5px;
   }
 
+  /* ===== TABLET (1000px) ===== */
   @media (max-width:1000px){
-    .vitals,.races,.ranks,.achs,.alerts,.banner-grid,.manifesto,.rules,.adds{grid-template-columns:1fr}
+    .vitals{grid-template-columns:repeat(3,1fr)}
+    .ranks{grid-template-columns:repeat(3,1fr)}
+    .achs,.alerts,.rules,.adds,.manifesto{grid-template-columns:repeat(2,1fr)}
+    .races{grid-template-columns:1fr}
     .transform{grid-template-columns:1fr}
-    .banner-stats{border-left:none;border-top:1px solid var(--line);padding:24px 0 0}
-    .qst,.mon-row{grid-template-columns:1fr;gap:8px}
+    .tf-side.after{border-left:none;border-top:1px solid var(--gold-dim)}
+    .tf-middle{border-left:none;border-right:none;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .banner-grid{grid-template-columns:1fr}
+    .banner-stats{border-left:none;border-top:1px solid var(--line);padding:24px 0 0;margin-top:8px}
+    .manifesto .mani-item:last-child{border-right:1px solid var(--line);grid-column:1/-1;border-top:1px solid var(--line)}
+    .manifesto .mani-item{border-right:1px solid var(--line)}
+    .manifesto .mani-item:nth-child(2){border-right:none}
+    .mon-row{grid-template-columns:120px 1fr;gap:16px}
+    .mon-how{grid-column:2}
+  }
+
+  /* ===== MOBILE LARGE (720px) ===== */
+  @media (max-width:720px){
+    body{font-size:13px}
+    .nav{padding:14px 16px;gap:12px}
+    .nav-menu{display:none}
+    .nav-left{gap:12px}
+    .logo{font-size:13px;letter-spacing:3px}
+    .nav-right{font-size:10px;gap:10px}
+    .live{font-size:9px;padding:3px 8px}
+
+    .content{padding:20px 16px 40px}
+
+    .banner{padding:24px 20px;margin-bottom:20px}
+    .banner-title{font-size:34px;letter-spacing:-1px;line-height:1.05}
+    .banner-descr{font-size:13px}
+    .banner-tag{font-size:9px;padding:3px 10px;margin-bottom:14px}
+    .banner-stats{gap:20px;padding:16px 0 0}
+    .bs-val{font-size:26px}
+    .bs-lbl{font-size:9px}
+
+    .sh{margin:28px 0 14px;flex-wrap:wrap;gap:4px}
+    .sh-title{font-size:18px}
+    .sh-num{font-size:10px}
+    .sh-right{font-size:10px;width:100%}
+
+    .manifesto{grid-template-columns:1fr}
+    .manifesto .mani-item{border-right:none;border-bottom:1px solid var(--line);padding:18px 20px}
+    .manifesto .mani-item:last-child{border-bottom:none;grid-column:auto;border-top:none}
+    .mani-title{font-size:16px}
+    .mani-text{font-size:12px}
+
+    .rules{grid-template-columns:repeat(2,1fr);gap:8px}
+    .rule{padding:18px 16px}
+    .rule-title{font-size:16px}
+    .rule-desc{font-size:11px}
+    .rule-num{font-size:10px;top:12px;right:14px}
+    .rule-icon{font-size:10px}
+
+    .vitals{grid-template-columns:repeat(2,1fr);gap:8px}
+    .vit{padding:14px 16px}
+    .vit-val{font-size:30px}
+    .vit-lbl{font-size:9px}
+    .vit-meta{font-size:10px;margin-top:6px}
+
+    .races{gap:12px}
+    .race-top{padding:18px 20px;flex-wrap:wrap;gap:12px}
+    .race-dist{font-size:54px;letter-spacing:-2px}
+    .race-dist small{font-size:18px}
+    .race-badge{font-size:9px}
+    .race-date{font-size:10px}
+    .race-date b{font-size:18px}
+    .trg{padding:14px 12px}
+    .trg-time{font-size:22px}
+    .trg-pace{font-size:9px}
+    .trg-lbl{font-size:8px}
+
+    .tf-side,.tf-middle{padding:22px 20px}
+    .tf-weight{font-size:60px;letter-spacing:-2px}
+    .tf-weight small{font-size:16px}
+    .tf-bf{font-size:18px}
+    .tf-detail{font-size:11px}
+    .tf-goal{padding:12px 14px}
+    .tf-goal-label{font-size:12px}
+
+    .ranks{grid-template-columns:repeat(2,1fr);gap:8px}
+    .rank{padding:18px 16px}
+    .rank-weight{font-size:34px;letter-spacing:-1px}
+    .rank.pico::before{font-size:8px;padding:3px 7px;top:-8px;right:12px}
+
+    .adds{grid-template-columns:repeat(2,1fr);gap:8px}
+    .add{padding:16px 14px}
+    .add-plus{font-size:24px}
+    .add-title{font-size:12px}
+    .add-desc{font-size:11px}
+
+    .journey{overflow-x:auto}
+    .qst{grid-template-columns:1fr;gap:8px;padding:18px 20px}
+    .qst-when{font-size:10px}
+    .qst-title{font-size:15px}
+    .qst-desc{font-size:12px}
+    .qst-status{justify-self:start;font-size:9px;padding:4px 8px}
+
+    .achs{grid-template-columns:1fr;gap:8px}
+    .ach{padding:22px 20px}
+    .ach-name{font-size:22px}
+    .ach-num{font-size:48px;top:16px;right:20px}
+    .ach-sub{font-size:11px;margin-bottom:14px;padding-bottom:12px}
+    .ach-list li{font-size:12px;padding:8px 0}
+
+    .mon-row{grid-template-columns:1fr;gap:4px;padding:16px 20px}
+    .mon-freq{font-size:10px}
+    .mon-what{font-size:14px}
+    .mon-how{font-size:12px}
+
+    .alerts{grid-template-columns:1fr;gap:8px}
+    .alt-head{padding:14px 18px}
+    .alt-title{font-size:14px}
+    .alt-sub{font-size:9px}
+    .alt-body li{font-size:12px;padding:10px 0}
+
+    .foot{padding:18px 16px;flex-direction:column;gap:6px;font-size:9px;text-align:center;justify-content:center}
+    .foot>div{text-align:center}
+  }
+
+  /* ===== MOBILE SMALL (380px) ===== */
+  @media (max-width:380px){
+    .banner-title{font-size:28px}
+    .rules,.ranks,.adds{grid-template-columns:1fr}
+    .vitals{grid-template-columns:repeat(2,1fr)}
+    .race-dist{font-size:44px}
+    .trg-time{font-size:18px}
+    .banner-stats{flex-wrap:wrap;gap:14px}
+    .bs{flex:1 1 40%}
   }
 </style>
 </head>
