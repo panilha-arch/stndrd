@@ -720,6 +720,105 @@
     white-space:nowrap;
   }
 
+  /* DIET */
+  .diet{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+  .day{
+    background:var(--card);
+    border:1px solid var(--line);
+    overflow:hidden;
+    transition:border-color .2s;
+  }
+  .day:hover{border-color:var(--gold-dim)}
+  .day-head{
+    padding:20px 22px;
+    border-bottom:1px solid var(--line);
+    background:var(--card-2);
+  }
+  .day-title{
+    font-size:20px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+    line-height:1;
+    margin-bottom:8px;
+  }
+  .day-title span{color:var(--gold)}
+  .day-tag{
+    display:inline-block;
+    padding:3px 8px;
+    background:var(--gold-bg);
+    border:1px solid var(--gold-dim);
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    color:var(--gold);
+    letter-spacing:2px;
+    font-weight:700;
+    text-transform:uppercase;
+  }
+  .meal{
+    padding:16px 22px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .meal:last-child{border-bottom:none}
+  .meal-head{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:8px;
+  }
+  .meal-time{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    font-weight:700;
+    color:var(--gold);
+    letter-spacing:1.5px;
+    background:var(--bg-2);
+    padding:3px 7px;
+    border:1px solid var(--line);
+    min-width:60px;
+    text-align:center;
+  }
+  .meal-name{
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    color:var(--text);
+  }
+  .meal-items{
+    list-style:none;
+    padding:0;
+    font-size:12px;
+    color:var(--mute);
+    line-height:1.55;
+  }
+  .meal-items li{
+    padding:3px 0 3px 14px;
+    position:relative;
+  }
+  .meal-items li::before{
+    content:"";
+    position:absolute;
+    left:0;top:11px;
+    width:4px;height:1px;
+    background:var(--gold-dim);
+  }
+  .meal-items li b{color:var(--text);font-weight:600}
+  .meal-note{
+    margin-top:8px;
+    padding:8px 10px;
+    background:var(--bg-2);
+    border-left:2px solid var(--gold);
+    font-size:11px;
+    color:var(--mute);
+    line-height:1.5;
+    font-style:italic;
+  }
+
   /* MONITORING */
   .mon{
     background:var(--card);
@@ -851,6 +950,7 @@
     .vitals{grid-template-columns:repeat(3,1fr)}
     .ranks{grid-template-columns:repeat(3,1fr)}
     .achs,.alerts,.rules,.adds,.manifesto{grid-template-columns:repeat(2,1fr)}
+    .diet{grid-template-columns:1fr;gap:12px}
     .races{grid-template-columns:1fr}
     .transform{grid-template-columns:1fr}
     .tf-side.after{border-left:none;border-top:1px solid var(--gold-dim)}
@@ -958,6 +1058,16 @@
     .mon-what{font-size:14px}
     .mon-how{font-size:12px}
 
+    .diet{gap:10px}
+    .day-head{padding:16px 18px}
+    .day-title{font-size:17px}
+    .day-tag{font-size:8px}
+    .meal{padding:14px 18px}
+    .meal-time{font-size:10px;padding:2px 6px;min-width:52px}
+    .meal-name{font-size:11px}
+    .meal-items{font-size:11px}
+    .meal-note{font-size:10px;padding:7px 9px}
+
     .alerts{grid-template-columns:1fr;gap:8px}
     .alt-head{padding:14px 18px}
     .alt-title{font-size:14px}
@@ -992,6 +1102,7 @@
       <li><a href="#races">PROVAS</a></li>
       <li><a href="#transform">TRANSFORM</a></li>
       <li><a href="#journey">JOURNEY</a></li>
+      <li><a href="#diet">DIETA</a></li>
     </ul>
   </div>
   <div class="nav-right">
@@ -1470,10 +1581,315 @@
 
   </div>
 
+  <!-- DIET -->
+  <div class="sh" id="diet">
+    <div class="sh-left">
+      <span class="sh-num">08</span>
+      <span class="sh-title">Dieta · Dia a Dia</span>
+    </div>
+    <span class="sh-right">Plano Michelle Ferrari · CRN 35014</span>
+  </div>
+
+  <div class="diet">
+
+    <!-- SEG QUA SEX -->
+    <div class="day">
+      <div class="day-head">
+        <div class="day-title">Seg · Qua · <span>Sex</span></div>
+        <span class="day-tag">Musc 08h</span>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">07:00</span>
+          <span class="meal-name">Café pré-treino</span>
+        </div>
+        <ul class="meal-items">
+          <li><b>1 ovo</b> + 3 claras</li>
+          <li>1 pão francês</li>
+          <li>40g queijo cottage</li>
+          <li>1 col. sobremesa chia</li>
+          <li>Café puro + até 100g melão ou morango</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">08:00</span>
+          <span class="meal-name">Intra-treino</span>
+        </div>
+        <div class="meal-note">500ml–1L de água por hora de treino</div>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">10:30</span>
+          <span class="meal-name">Lanche</span>
+        </div>
+        <ul class="meal-items">
+          <li><b>1 dose whey isolado</b> + 200ml água</li>
+          <li>150g mamão/melão/morango ou 2 kiwis</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">12:00</span>
+          <span class="meal-name">Almoço</span>
+        </div>
+        <ul class="meal-items">
+          <li>Salada verde à vontade (min. 1/4 do prato)</li>
+          <li>1 col. sopa mix de fibras</li>
+          <li>150g legumes (crus/vapor/assados)</li>
+          <li>150g <b>arroz integral</b> ou batata doce/abóbora/quinoa/macarrão integral</li>
+          <li>80g feijão (ou lentilha/ervilha/grão de bico)</li>
+          <li><b>150–170g proteína</b> magra (carne/frango/peixe)</li>
+          <li>1 col. sobremesa azeite</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">17:00</span>
+          <span class="meal-name">Lanche tarde</span>
+        </div>
+        <ul class="meal-items">
+          <li>1 pão francês integral ou 2 ft pão forma integral</li>
+          <li><b>100g frango desfiado</b> ou atum/carne desfiada</li>
+          <li>40g cottage + chia</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">20:30</span>
+          <span class="meal-name">Jantar</span>
+        </div>
+        <ul class="meal-items">
+          <li>Mesma estrutura do almoço</li>
+          <li>+ 120g fruta (mamão/abacaxi/tangerina/kiwi)</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">21:30</span>
+          <span class="meal-name">Ceia</span>
+        </div>
+        <ul class="meal-items">
+          <li>170ml iogurte zero açúcar</li>
+          <li><i>Verde Campo / Activia Zero / Grego Vigor</i></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TER QUI -->
+    <div class="day">
+      <div class="day-head">
+        <div class="day-title">Ter · <span>Qui</span></div>
+        <span class="day-tag">Corrida 06h20</span>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">05:00</span>
+          <span class="meal-name">Pré-treino corrida</span>
+        </div>
+        <ul class="meal-items">
+          <li><b>Sem estímulos:</b> jejum + café</li>
+          <li><b>Com tiros:</b> 200ml suco integral ou 1 banana ou 1 ft pão integral com cottage</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">06:00</span>
+          <span class="meal-name">Intra-treino</span>
+        </div>
+        <ul class="meal-items">
+          <li>500ml–1L água/hora</li>
+          <li><b>1 gel Dobro Jabuticaba</b> no meio + 200ml água</li>
+          <li>1 Liquidz/hora em Soft Flask 500ml</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">07:30</span>
+          <span class="meal-name">Café da manhã</span>
+        </div>
+        <ul class="meal-items">
+          <li>1 ovo + 3 claras</li>
+          <li>1 pão francês + 40g cottage + chia</li>
+          <li>Café + até 100g melão ou morango</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">10:30</span>
+          <span class="meal-name">Lanche</span>
+        </div>
+        <ul class="meal-items">
+          <li>1 dose whey isolado + 200ml água</li>
+          <li>150g fruta ou 2 kiwis</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">12:00</span>
+          <span class="meal-name">Almoço</span>
+        </div>
+        <ul class="meal-items">
+          <li>Salada + mix fibras + legumes + carbo integral + feijão</li>
+          <li>150–170g proteína magra + azeite</li>
+          <li>+ 120g mamão/abacaxi/tangerina/kiwi/melão</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">17:00</span>
+          <span class="meal-name">Lanche tarde</span>
+        </div>
+        <ul class="meal-items">
+          <li>Pão integral + 100g frango/atum/carne</li>
+          <li>40g cottage + chia</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">20:30</span>
+          <span class="meal-name">Jantar</span>
+        </div>
+        <ul class="meal-items">
+          <li>Mesma estrutura do almoço + fruta</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">21:30</span>
+          <span class="meal-name">Ceia</span>
+        </div>
+        <ul class="meal-items">
+          <li>170ml iogurte zero açúcar</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FIM DE SEMANA -->
+    <div class="day">
+      <div class="day-head">
+        <div class="day-title">Sáb · <span>Dom</span></div>
+        <span class="day-tag">Musc 10h30 + Run 16h</span>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">09:00</span>
+          <span class="meal-name">Café pré-treino</span>
+        </div>
+        <ul class="meal-items">
+          <li>1 ovo + 3 claras</li>
+          <li>1 pão francês + 40g cottage + chia</li>
+          <li>Café + até 100g fruta</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">10:00</span>
+          <span class="meal-name">Intra-musc</span>
+        </div>
+        <div class="meal-note">500ml–1L água/hora</div>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">11:30</span>
+          <span class="meal-name">Lanche</span>
+        </div>
+        <ul class="meal-items">
+          <li>1 dose whey + 200ml água</li>
+          <li>150g fruta</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">13:00</span>
+          <span class="meal-name">Almoço</span>
+        </div>
+        <ul class="meal-items">
+          <li>Estrutura completa do almoço + fruta</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">15:00</span>
+          <span class="meal-name">Lanche tarde</span>
+        </div>
+        <ul class="meal-items">
+          <li>Pão integral + 100g frango/atum/carne</li>
+          <li>40g cottage + chia</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">16:00</span>
+          <span class="meal-name">Pré-corrida</span>
+        </div>
+        <ul class="meal-items">
+          <li>2 ft pão forma integral OU 1 pão francês integral com cottage</li>
+        </ul>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">17:30</span>
+          <span class="meal-name">Intra-corrida</span>
+        </div>
+        <ul class="meal-items">
+          <li>500ml–1L água/hora</li>
+          <li>1 Liquidz/hora em Soft Flask 500ml</li>
+          <li><b>Longos &gt;1h:</b> 1 gel carbo cada 30min + 200ml água</li>
+        </ul>
+        <div class="meal-note">Z2 sódio alto: Pitaya / Tangerine / Caramelo / Pink Lemonade · ou Paceit: Neutro / Freeze / Tropical · ou Gel Dobro: Tropical / Jabuticaba</div>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">19:30</span>
+          <span class="meal-name">Jantar</span>
+        </div>
+        <ul class="meal-items">
+          <li>Estrutura completa + fruta</li>
+        </ul>
+        <div class="meal-note"><b>Refeição livre (1×/sem):</b> 2 hambúrgueres no sábado — não conta macros, não compensa com treino, é lei 🍔</div>
+      </div>
+
+      <div class="meal">
+        <div class="meal-head">
+          <span class="meal-time">21:30</span>
+          <span class="meal-name">Ceia</span>
+        </div>
+        <ul class="meal-items">
+          <li>170ml iogurte zero açúcar</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
   <!-- MONITORING -->
   <div class="sh">
     <div class="sh-left">
-      <span class="sh-num">08</span>
+      <span class="sh-num">09</span>
       <span class="sh-title">Tracking</span>
     </div>
     <span class="sh-right">Sem obsessão</span>
@@ -1510,7 +1926,7 @@
   <!-- ALERTS -->
   <div class="sh">
     <div class="sh-left">
-      <span class="sh-num">09</span>
+      <span class="sh-num">10</span>
       <span class="sh-title">Alerts</span>
     </div>
     <span class="sh-right">Quando reagir</span>
