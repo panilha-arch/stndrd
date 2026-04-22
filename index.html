@@ -720,6 +720,243 @@
     white-space:nowrap;
   }
 
+  /* RACE DAY */
+  .rd{
+    background:var(--card);
+    border:1px solid var(--gold);
+    position:relative;
+    overflow:hidden;
+    margin-bottom:32px;
+  }
+  .rd::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:4px;
+    background:var(--gold);
+  }
+  .rd-head{
+    padding:24px 28px;
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:20px;
+    align-items:center;
+    background:linear-gradient(135deg,var(--card-2) 0%,var(--card) 100%);
+  }
+  .rd-kicker{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--gold);
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .rd-title{
+    font-size:30px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-1px;
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .rd-sub{
+    font-size:13px;
+    color:var(--mute);
+  }
+  .rd-goal{
+    text-align:right;
+    padding-left:24px;
+    border-left:1px solid var(--line);
+  }
+  .rd-goal-lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--mute);
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-bottom:4px;
+  }
+  .rd-goal-val{
+    font-size:44px;
+    font-weight:900;
+    color:var(--gold);
+    letter-spacing:-1.5px;
+    line-height:1;
+  }
+  .rd-goal-pace{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--mute);
+    margin-top:4px;
+  }
+
+  .rd-event{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-bottom:1px solid var(--line);
+  }
+  .rd-ev{
+    padding:16px 20px;
+    border-right:1px solid var(--line);
+  }
+  .rd-ev:last-child{border-right:none}
+  .rd-ev-lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--mute);
+    margin-bottom:4px;
+  }
+  .rd-ev-val{
+    font-size:14px;
+    font-weight:700;
+    color:var(--text);
+  }
+
+  .rd-body{padding:24px 28px}
+  .rd-sec{margin-bottom:26px}
+  .rd-sec:last-child{margin-bottom:0}
+  .rd-sec-title{
+    font-size:14px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-0.2px;
+    margin-bottom:12px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+  }
+  .rd-sec-title small{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--gold);
+    letter-spacing:1.5px;
+    font-weight:500;
+  }
+
+  .rd-logistics{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:0;
+  }
+  .rd-logistics .hr{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    color:var(--gold);
+    padding:10px 12px 10px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-size:13px;
+  }
+  .rd-logistics .ac{
+    padding:10px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-size:13px;
+    color:var(--mute);
+  }
+  .rd-logistics .ac b{color:var(--text);font-weight:600}
+  .rd-logistics > div:nth-last-child(-n+2){border-bottom:none}
+
+  .rd-pace{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+  .rd-pace thead th{
+    text-align:left;
+    padding:10px 14px;
+    background:var(--card-2);
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--mute);
+    font-weight:600;
+    border-bottom:1px solid var(--line);
+  }
+  .rd-pace tbody tr{border-bottom:1px solid var(--line-soft)}
+  .rd-pace tbody tr:last-child{border-bottom:none}
+  .rd-pace tbody tr.final{background:var(--gold-bg)}
+  .rd-pace td{padding:12px 14px;vertical-align:middle}
+  .rd-pace td.km{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    color:var(--gold);
+    font-size:16px;
+    width:60px;
+  }
+  .rd-pace td.pace,.rd-pace td.acum{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    font-size:14px;
+    width:90px;
+  }
+  .rd-pace td.vibe{color:var(--mute);font-size:12px;font-style:italic}
+
+  .rd-mental{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+  .rd-mental-box{
+    padding:14px 16px;
+    background:var(--card-2);
+    border:1px solid var(--line);
+  }
+  .rd-mental-box h6{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:6px;
+    font-weight:700;
+  }
+  .rd-mental-box p{
+    font-size:12px;
+    color:var(--mute);
+    line-height:1.5;
+  }
+  .rd-mental-box p b{color:var(--text);font-weight:600}
+
+  .rd-errors{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+  }
+  .rd-error{
+    padding:12px 14px;
+    background:rgba(230,57,70,0.06);
+    border-left:3px solid var(--red);
+    font-size:12px;
+    color:var(--mute);
+    line-height:1.5;
+  }
+  .rd-error b{color:var(--red);font-weight:700;text-transform:uppercase;font-size:10px;letter-spacing:1px;display:block;margin-bottom:3px;font-family:'JetBrains Mono',monospace}
+
+  .rd-check{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:6px 20px;
+    font-size:12px;
+    color:var(--mute);
+  }
+  .rd-check div{
+    padding:6px 0;
+    border-bottom:1px dashed var(--line-soft);
+  }
+  .rd-check div::before{
+    content:"☐ ";
+    color:var(--gold);
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    margin-right:6px;
+  }
+
   /* DIET */
   .diet{
     display:grid;
@@ -1208,6 +1445,29 @@
     .mon-what{font-size:14px}
     .mon-how{font-size:12px}
 
+    .rd-head{grid-template-columns:1fr;gap:16px;padding:20px}
+    .rd-goal{border-left:none;border-top:1px solid var(--line);padding:16px 0 0;text-align:left}
+    .rd-title{font-size:22px}
+    .rd-goal-val{font-size:36px}
+    .rd-event{grid-template-columns:repeat(2,1fr)}
+    .rd-ev{padding:12px 16px}
+    .rd-ev:nth-child(2){border-right:none}
+    .rd-ev:nth-child(1),.rd-ev:nth-child(2){border-bottom:1px solid var(--line)}
+    .rd-body{padding:20px}
+    .rd-sec-title{font-size:13px;flex-direction:column;align-items:flex-start;gap:4px}
+    .rd-logistics{grid-template-columns:70px 1fr}
+    .rd-logistics .hr{font-size:12px;padding:8px 10px 8px 0}
+    .rd-logistics .ac{font-size:12px;padding:8px 0}
+    .rd-pace{font-size:12px}
+    .rd-pace thead th{padding:8px 10px;font-size:9px}
+    .rd-pace td{padding:10px}
+    .rd-pace td.km{font-size:13px;width:40px}
+    .rd-pace td.pace,.rd-pace td.acum{font-size:12px;width:auto}
+    .rd-pace td.vibe{font-size:11px}
+    .rd-mental{grid-template-columns:1fr}
+    .rd-errors{grid-template-columns:1fr}
+    .rd-check{grid-template-columns:1fr;font-size:11px}
+
     .diet{gap:10px}
     .day-off-grid{grid-template-columns:1fr}
     .day-off-hero{border-right:none;border-bottom:1px solid var(--line);padding:22px 20px}
@@ -1264,6 +1524,7 @@
       <li><a href="#races">PROVAS</a></li>
       <li><a href="#transform">TRANSFORM</a></li>
       <li><a href="#journey">JOURNEY</a></li>
+      <li><a href="#raceday" style="color:var(--gold)">🏁 PROVA</a></li>
       <li><a href="#diet">DIETA</a></li>
     </ul>
   </div>
@@ -1405,6 +1666,135 @@
       <div class="vit-lbl">Próxima prova</div>
       <div class="vit-val">4<small>dias</small></div>
       <div class="vit-meta">5K dom 26/04</div>
+    </div>
+  </div>
+
+  <!-- RACE DAY BRIEFING -->
+  <div class="sh" id="raceday">
+    <div class="sh-left">
+      <span class="sh-num">🏁</span>
+      <span class="sh-title">Race Day · Circuito das Estações</span>
+    </div>
+    <span class="sh-right">Domingo · 26 abr · 06h00</span>
+  </div>
+
+  <div class="rd">
+    <div class="rd-head">
+      <div>
+        <div class="rd-kicker">Outono 2026 · 5K</div>
+        <div class="rd-title">Alphaville Ponta Negra</div>
+        <div class="rd-sub">Av. Perimetral Thales Loureiro · Manaus AM · Madrugada de domingo</div>
+      </div>
+      <div class="rd-goal">
+        <div class="rd-goal-lbl">Meta</div>
+        <div class="rd-goal-val">28:30</div>
+        <div class="rd-goal-pace">pace 5:42 /km</div>
+      </div>
+    </div>
+
+    <div class="rd-event">
+      <div class="rd-ev">
+        <div class="rd-ev-lbl">Largada</div>
+        <div class="rd-ev-val">06h00 Dom</div>
+      </div>
+      <div class="rd-ev">
+        <div class="rd-ev-lbl">Piso</div>
+        <div class="rd-ev-val">Asfalto plano</div>
+      </div>
+      <div class="rd-ev">
+        <div class="rd-ev-lbl">Clima esperado</div>
+        <div class="rd-ev-val">27°C · UR 88%</div>
+      </div>
+      <div class="rd-ev">
+        <div class="rd-ev-lbl">Retirada kit</div>
+        <div class="rd-ev-val">Sáb até 18h · PN Shopping L2</div>
+      </div>
+    </div>
+
+    <div class="rd-body">
+
+      <div class="rd-sec">
+        <div class="rd-sec-title">Logística · do despertador à linha <small>madrugada</small></div>
+        <div class="rd-logistics">
+          <div class="hr">04:30</div><div class="ac">Acordar. Banheiro. Pesar (registro).</div>
+          <div class="hr">04:45</div><div class="ac">Café-prova: <b>1 pão francês + mel + café puro</b>. Água 300ml.</div>
+          <div class="hr">05:00</div><div class="ac">Sair de casa. Roupa e kit já separados desde sexta.</div>
+          <div class="hr">05:20</div><div class="ac">Chegar no Alphaville. <b>Banheiro</b> preventivo (fila!).</div>
+          <div class="hr">05:35</div><div class="ac">Aquecimento: trote 8min + <b>4× strides 50m @ 5:00</b> + alongamento dinâmico.</div>
+          <div class="hr">05:50</div><div class="ac">Baliza. Posicionar <b>atrás do grupo 3–5k</b>, não na frente.</div>
+          <div class="hr">05:58</div><div class="ac">2 respirações profundas. Garmin zerado.</div>
+          <div class="hr">06:00</div><div class="ac"><b>🏁 LARGADA.</b></div>
+          <div class="hr">~06:28</div><div class="ac">Cruzar a linha de chegada (meta 28:30).</div>
+          <div class="hr">06:40</div><div class="ac">Caminhar. Água. Fruta. Foto.</div>
+        </div>
+      </div>
+
+      <div class="rd-sec">
+        <div class="rd-sec-title">Plano de pace <small>negative split leve</small></div>
+        <table class="rd-pace">
+          <thead>
+            <tr><th>Km</th><th>Pace alvo</th><th>Acumulado</th><th>Sensação correta</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="km">1</td><td class="pace">5:50</td><td class="acum">5:50</td><td class="vibe">"Tô segurando demais" — é esse o ponto</td></tr>
+            <tr><td class="km">2</td><td class="pace">5:42</td><td class="acum">11:32</td><td class="vibe">Respiração assentou. Alvo.</td></tr>
+            <tr><td class="km">3</td><td class="pace">5:40</td><td class="acum">17:12</td><td class="vibe">Meio. Foco.</td></tr>
+            <tr><td class="km">4</td><td class="pace">5:38</td><td class="acum">22:50</td><td class="vibe">Dói. Não desacelera.</td></tr>
+            <tr class="final"><td class="km">5</td><td class="pace">5:30</td><td class="acum">28:20</td><td class="vibe">Tudo que tem. Não olha pra trás.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="rd-sec">
+        <div class="rd-sec-title">Mental por trecho</div>
+        <div class="rd-mental">
+          <div class="rd-mental-box">
+            <h6>Km 0–2 · saída</h6>
+            <p>Todo mundo sai explodindo. <b>Deixa.</b> Confere pace no Garmin <b>só aos 500m</b>. Se tiver abaixo de 5:40, afrouxa. Respiração 3:2.</p>
+          </div>
+          <div class="rd-mental-box">
+            <h6>Km 2,5 · hidratação</h6>
+            <p>Se tiver posto, <b>1 gole só</b> sem parar. Derrama o resto na nuca. –5°C na percepção térmica.</p>
+          </div>
+          <div class="rd-mental-box">
+            <h6>Km 3–5 · prova real</h6>
+            <p>"Porra, tá duro" é normal. Mantra: <b>"só mais 2"</b>. Último 500m: tudo. Linha você cruza <b>passando</b>, não parando antes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rd-sec">
+        <div class="rd-sec-title">Erros pra não cometer</div>
+        <div class="rd-errors">
+          <div class="rd-error"><b>Sair em 5:20</b>Explode no km 3. Primeiro km sempre o mais lento.</div>
+          <div class="rd-error"><b>Tênis novo</b>Usa o que você treina. Estreia nunca em prova.</div>
+          <div class="rd-error"><b>Parar no posto</b>Perde 5–10s. Gole em movimento.</div>
+          <div class="rd-error"><b>Hambúrguer sábado</b>Nessa semana muda pro almoço ou pula. Jantar leve.</div>
+          <div class="rd-error"><b>Olhar relógio toda hora</b>Só km 1, 2, 4. Deixa o corpo correr.</div>
+          <div class="rd-error"><b>Acelerar no km 2</b>Só a partir do km 3. Paciência.</div>
+        </div>
+      </div>
+
+      <div class="rd-sec">
+        <div class="rd-sec-title">Checklist material <small>deixa na bolsa na sexta</small></div>
+        <div class="rd-check">
+          <div>Número + chip do kit</div>
+          <div>Tênis de corrida (treinado)</div>
+          <div>Meias técnicas</div>
+          <div>Camisa leve</div>
+          <div>Bermuda/short</div>
+          <div>Boné leve (chance de chuva)</div>
+          <div>Garmin carregado · modo corrida</div>
+          <div>Alfinetes pro número</div>
+          <div>Toalha pequena</div>
+          <div>Garrafinha de água</div>
+          <div>Troca de roupa pós-prova</div>
+          <div>Chinelo pós-prova</div>
+          <div>Documento + celular</div>
+          <div>Protetor solar (se prolongar)</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
