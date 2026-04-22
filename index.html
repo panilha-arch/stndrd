@@ -726,6 +726,75 @@
     grid-template-columns:repeat(3,1fr);
     gap:16px;
   }
+  .day-off{
+    grid-column:1 / -1;
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:0;
+    position:relative;
+    overflow:hidden;
+  }
+  .day-off::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:4px;height:100%;
+    background:var(--gold-dim);
+  }
+  .day-off-grid{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:0;
+  }
+  .day-off-hero{
+    padding:32px 36px;
+    background:linear-gradient(135deg,var(--card-2) 0%,var(--card) 100%);
+    border-right:1px solid var(--line);
+  }
+  .day-off-kicker{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .day-off-title{
+    font-size:48px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-2px;
+    line-height:0.9;
+    margin-bottom:12px;
+  }
+  .day-off-title span{color:var(--gold-dim)}
+  .day-off-lede{
+    font-size:13px;
+    color:var(--mute);
+    line-height:1.5;
+  }
+  .day-off-body{
+    padding:24px 28px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .day-off-col h5{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:10px;
+    font-weight:700;
+  }
+  .day-off-col p{
+    font-size:12px;
+    color:var(--mute);
+    line-height:1.5;
+  }
+  .day-off-col p b{color:var(--text);font-weight:600}
   .day{
     background:var(--card);
     border:1px solid var(--line);
@@ -951,6 +1020,7 @@
     .ranks{grid-template-columns:repeat(3,1fr)}
     .achs,.alerts,.rules,.adds,.manifesto{grid-template-columns:repeat(2,1fr)}
     .diet{grid-template-columns:1fr;gap:12px}
+    .day-off-body{grid-template-columns:repeat(3,1fr)}
     .races{grid-template-columns:1fr}
     .transform{grid-template-columns:1fr}
     .tf-side.after{border-left:none;border-top:1px solid var(--gold-dim)}
@@ -1059,6 +1129,10 @@
     .mon-how{font-size:12px}
 
     .diet{gap:10px}
+    .day-off-grid{grid-template-columns:1fr}
+    .day-off-hero{border-right:none;border-bottom:1px solid var(--line);padding:22px 20px}
+    .day-off-title{font-size:36px}
+    .day-off-body{grid-template-columns:1fr;gap:14px;padding:20px}
     .day-head{padding:16px 18px}
     .day-title{font-size:17px}
     .day-tag{font-size:8px}
@@ -1780,10 +1854,10 @@
       </div>
     </div>
 
-    <!-- FIM DE SEMANA -->
+    <!-- SÁBADO -->
     <div class="day">
       <div class="day-head">
-        <div class="day-title">Sáb · <span>Dom</span></div>
+        <div class="day-title"><span>Sábado</span></div>
         <span class="day-tag">Musc 10h30 + Run 16h</span>
       </div>
 
@@ -1881,6 +1955,31 @@
         <ul class="meal-items">
           <li>170ml iogurte zero açúcar</li>
         </ul>
+      </div>
+    </div>
+
+    <!-- DOMINGO OFF -->
+    <div class="day-off">
+      <div class="day-off-grid">
+        <div class="day-off-hero">
+          <div class="day-off-kicker">07 · Rest Day</div>
+          <div class="day-off-title">Domingo<br><span>Off Total</span></div>
+          <div class="day-off-lede">Sem musculação. Sem corrida. Sem pré-treino. Sem intra-treino. Dia pra recuperar, viver e comer sem horário.</div>
+        </div>
+        <div class="day-off-body">
+          <div class="day-off-col">
+            <h5>Estrutura</h5>
+            <p>Estrutura base da Michelle <b>segue igual</b> — café, lanche, almoço, lanche tarde, jantar, ceia. Sem pré/pós treino.</p>
+          </div>
+          <div class="day-off-col">
+            <h5>Carbo menor</h5>
+            <p>Como não tem treino, <b>1 porção de carbo é suficiente</b> por refeição (em vez das 3 col. servir). Proteína mantém.</p>
+          </div>
+          <div class="day-off-col">
+            <h5>Social livre</h5>
+            <p>Se rolar almoço de família, churrasco, saída — <b>flui</b>. Domingo não tem regra. Segunda retoma a estrutura.</p>
+          </div>
+        </div>
       </div>
     </div>
 
