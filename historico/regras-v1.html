@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STNDRD · Histórico · Regras v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0A;
+    --bg-2:#121212;
+    --card:#161616;
+    --card-2:#1E1E1E;
+    --line:#2A2A2A;
+    --line-soft:#222;
+    --text:#F5F5F5;
+    --mute:#8A8A8A;
+    --dim:#5A5A5A;
+    --gold:#D4A574;
+    --gold-dim:#8B6F47;
+    --gold-bg:rgba(212,165,116,0.08);
+    --red:#E63946;
+    --green:#4ADE80;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    line-height:1.5;
+    padding:32px;
+  }
+  .wrap{max-width:1200px;margin:0 auto}
+
+  .back{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--gold);
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:24px;
+    padding:8px 14px;
+    border:1px solid var(--line);
+    background:var(--card);
+    transition:all .2s;
+  }
+  .back:hover{border-color:var(--gold);background:var(--gold-bg)}
+
+  h1{
+    font-size:36px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-1px;
+    line-height:1;
+    margin-bottom:8px;
+  }
+  .lede{
+    color:var(--mute);
+    margin-bottom:32px;
+    padding-bottom:24px;
+    border-bottom:1px solid var(--line);
+  }
+
+  h2{
+    font-size:20px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+    margin:40px 0 16px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--gold);
+  }
+  h2 small{
+    color:var(--mute);
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    font-weight:500;
+    margin-left:12px;
+    letter-spacing:1.5px;
+  }
+
+  /* Manifesto */
+  .manifesto{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--card);border:1px solid var(--line);margin-bottom:24px}
+  .mani-item{padding:24px 28px;border-right:1px solid var(--line)}
+  .mani-item:last-child{border-right:none}
+  .mani-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .mani-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:2px;font-weight:700;padding:3px 8px;background:var(--gold-bg);border:1px solid var(--gold-dim)}
+  .mani-title{font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:-0.3px}
+  .mani-text{font-size:13px;color:var(--mute);line-height:1.6}
+  .mani-text b{color:var(--text);font-weight:600}
+
+  /* Rules */
+  .rules{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+  .rule{background:var(--card);border:1px solid var(--line);padding:24px;position:relative}
+  .rule-num{position:absolute;top:14px;right:20px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:1.5px}
+  .rule-icon{font-size:13px;color:var(--gold);font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:2px;margin-bottom:10px}
+  .rule-title{font-size:20px;font-weight:800;text-transform:uppercase;letter-spacing:-0.3px;line-height:1.1;margin-bottom:8px}
+  .rule-desc{font-size:12px;color:var(--mute);line-height:1.5}
+
+  /* Adds */
+  .adds{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+  .add{background:var(--card);border:1px solid var(--line);padding:22px}
+  .add-plus{font-size:32px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px}
+  .add-title{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:-0.2px;margin-bottom:6px}
+  .add-desc{font-size:12px;color:var(--mute);line-height:1.5}
+
+  /* Tracking */
+  .mon{background:var(--card);border:1px solid var(--line);margin-bottom:24px}
+  .mon-row{display:grid;grid-template-columns:160px 280px 1fr;gap:24px;padding:20px 28px;border-bottom:1px solid var(--line);align-items:center}
+  .mon-row:last-child{border-bottom:none}
+  .mon-freq{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase}
+  .mon-what{font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:-0.3px}
+  .mon-how{font-size:13px;color:var(--mute);line-height:1.5}
+
+  /* Alerts */
+  .alerts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+  .alt{background:var(--card);border:1px solid var(--line)}
+  .alt-head{padding:18px 22px;background:var(--card-2);border-bottom:1px solid var(--line)}
+  .alt-title{font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:-0.3px}
+  .alt-sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;font-weight:500}
+  .alt-body{padding:6px 22px 18px}
+  .alt-body ul{list-style:none}
+  .alt-body li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:13px;gap:12px}
+  .alt-body li:last-child{border-bottom:none}
+  .alt-body li span:first-child{color:var(--mute)}
+  .alt-body li strong{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);font-weight:700;white-space:nowrap}
+
+  .meta-stamp{
+    margin-top:48px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    color:var(--dim);
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    text-align:center;
+  }
+
+  @media(max-width:900px){
+    .manifesto,.rules,.adds,.alerts{grid-template-columns:1fr}
+    .mon-row{grid-template-columns:1fr;gap:8px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a href="../" class="back">← VOLTAR AO PAINEL</a>
+
+<h1>Regras · Filosofia · Tracking · Alerts</h1>
+<p class="lede">Conteúdo de referência. Saiu do painel principal em 22/04/2026 pra dar lugar a informação contextual do momento. Fica salvo aqui como histórico — pode reler quando quiser revisitar a filosofia do plano.</p>
+
+<h2>Manifesto <small>os 3 princípios do plano</small></h2>
+<div class="manifesto">
+  <div class="mani-item">
+    <div class="mani-head"><span class="mani-badge">01</span><span class="mani-title">Por adição</span></div>
+    <p class="mani-text">Plano não corta alimento. Adiciona <b>água, vegetal, caminhada, sono</b>. O corpo faz o déficit sozinho, sem contabilidade.</p>
+  </div>
+  <div class="mani-item">
+    <div class="mani-head"><span class="mani-badge">02</span><span class="mani-title">Flexibilidade sagrada</span></div>
+    <p class="mani-text"><b>Gelato 2×/semana</b> e <b>hambúrguer de sábado</b> são parte do plano. Não pagam com treino, não geram culpa, não entram na conta.</p>
+  </div>
+  <div class="mani-item">
+    <div class="mani-head"><span class="mani-badge">03</span><span class="mani-title">Longo prazo</span></div>
+    <p class="mani-text">Meta é o que cabe na vida <b>pra sempre</b>. Visual de 10% BF sustentado &gt; 8% BF sofrido. Sustentabilidade antes de estética.</p>
+  </div>
+</div>
+
+<h2>Regras que não se tocam <small>não-negociáveis</small></h2>
+<div class="rules">
+  <div class="rule">
+    <div class="rule-num">01</div>
+    <div class="rule-icon">+ FLEX</div>
+    <div class="rule-title">Gelato 2×/sem</div>
+    <div class="rule-desc">Parte do plano. Não é cheat, não é pecado, não paga com corrida. Come e segue.</div>
+  </div>
+  <div class="rule">
+    <div class="rule-num">02</div>
+    <div class="rule-icon">+ FLEX</div>
+    <div class="rule-title">Hambúrguer sábado</div>
+    <div class="rule-desc">Refeição livre fixa. 2 hambúrgueres, sem contar macro, sem compensar. É lei.</div>
+  </div>
+  <div class="rule">
+    <div class="rule-num">03</div>
+    <div class="rule-icon">- RIGIDEZ</div>
+    <div class="rule-title">Sem regime</div>
+    <div class="rule-desc">Zero contagem de kcal no dia a dia. Estrutura da Michelle roda no piloto automático.</div>
+  </div>
+  <div class="rule">
+    <div class="rule-num">04</div>
+    <div class="rule-icon">- BALANÇA</div>
+    <div class="rule-title">Foto &gt; Peso</div>
+    <div class="rule-desc">Peso diário fora. Foto mensal, fita na cintura a cada 2 sem, roupa caindo. Só isso.</div>
+  </div>
+</div>
+
+<h2>Por adição <small>o que você ganha em vez de perde</small></h2>
+<div class="adds">
+  <div class="add"><div class="add-plus">+</div><div class="add-title">Água antes da refeição</div><div class="add-desc">500ml antes do almoço e jantar. Saciedade natural, sem contar nada.</div></div>
+  <div class="add"><div class="add-plus">+</div><div class="add-title">Vegetal extra</div><div class="add-desc">Uma porção a mais no almoço. Volume, fibra, saciedade — sem kcal.</div></div>
+  <div class="add"><div class="add-plus">+</div><div class="add-title">Caminhada pós-jantar</div><div class="add-desc">15min três vezes na semana. NEAT que soma o mês inteiro.</div></div>
+  <div class="add"><div class="add-plus">+</div><div class="add-title">Uma hora de sono</div><div class="add-desc">Regula fome, cortisol e recuperação. O ajuste mais forte do plano.</div></div>
+</div>
+
+<h2>Tracking <small>o que medir e quando — sem obsessão</small></h2>
+<div class="mon">
+  <div class="mon-row"><div class="mon-freq">Mensal</div><div class="mon-what">Foto 4 ângulos</div><div class="mon-how">Mesmo horário, mesma luz, manhã em jejum. Compara com o mês anterior. Principal indicador.</div></div>
+  <div class="mon-row"><div class="mon-freq">Quinzenal</div><div class="mon-what">Fita na cintura</div><div class="mon-how">Umbigo. Um número só. Sem balança, sem escala — é o metric mais honesto sem gatilho.</div></div>
+  <div class="mon-row"><div class="mon-freq">Quando lembrar</div><div class="mon-what">Roupa caindo</div><div class="mon-how">Calça da cintura é o melhor termômetro. Camisa esticando no ombro e braço também conta.</div></div>
+  <div class="mon-row"><div class="mon-freq">Mensal</div><div class="mon-what">Exames completos</div><div class="mon-how">Lipidograma, hepático, renal, hematócrito, ferritina, testo, E2. Inegociável no contexto atual.</div></div>
+  <div class="mon-row"><div class="mon-freq">Diário sutil</div><div class="mon-what">Bem-estar</div><div class="mon-how">Sono, humor, energia, libido. Se qualquer um piora 2 sem seguidas, plano ajusta — independente do que a fita diz.</div></div>
+</div>
+
+<h2>Alerts <small>quando reagir</small></h2>
+<div class="alerts">
+  <div class="alt">
+    <div class="alt-head"><div class="alt-title">Nada mudando</div><div class="alt-sub">4+ sem sem progresso</div></div>
+    <div class="alt-body"><ul>
+      <li><span>Cintura parada</span><strong>+ 1 caminhada</strong></li>
+      <li><span>Força travando</span><strong>+ 1h sono</strong></li>
+      <li><span>Sem sensação</span><strong>revisar Michelle</strong></li>
+    </ul></div>
+  </div>
+  <div class="alt">
+    <div class="alt-head"><div class="alt-title">Pausa pro médico</div><div class="alt-sub">Prioridade absoluta</div></div>
+    <div class="alt-body"><ul>
+      <li><span>PA em jejum</span><strong>&gt; 140/90</strong></li>
+      <li><span>Hematócrito</span><strong>&gt; 52%</strong></li>
+      <li><span>Dor no peito</span><strong>PARAR</strong></li>
+    </ul></div>
+  </div>
+  <div class="alt">
+    <div class="alt-head"><div class="alt-title">Mente pesando</div><div class="alt-sub">Volta do gatilho</div></div>
+    <div class="alt-body"><ul>
+      <li><span>Culpa com comida</span><strong>stop plano</strong></li>
+      <li><span>Obsessão com foto</span><strong>pausar tracking</strong></li>
+      <li><span>Corrida virar castigo</span><strong>reavaliar tudo</strong></li>
+    </ul></div>
+  </div>
+</div>
+
+<div class="meta-stamp">Arquivado em 22 abr 2026 · Edição 02 do painel STNDRD · @panilha · Manaus AM</div>
+
+</div>
+</body>
+</html>

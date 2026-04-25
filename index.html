@@ -102,6 +102,115 @@
   /* CONTENT */
   .content{padding:40px 32px 60px}
 
+  /* NOW — bloco dinâmico */
+  .now{
+    background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 100%);
+    border:1px solid var(--gold);
+    margin-bottom:32px;
+    overflow:hidden;
+    position:relative;
+  }
+  .now::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:3px;
+    background:linear-gradient(90deg,var(--gold) 0%,transparent 100%);
+  }
+  .now-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 28px;
+    border-bottom:1px solid var(--line);
+    background:var(--card-2);
+  }
+  .now-head-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .now-head-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:#000;
+    background:var(--gold);
+    padding:4px 10px;
+    letter-spacing:2px;
+    font-weight:700;
+  }
+  .now-head-title{
+    font-size:18px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+  }
+  .now-head-right{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--mute);
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+  }
+
+  .now-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr 1fr;
+    gap:0;
+  }
+  .now-cell{
+    padding:24px 28px;
+    border-right:1px solid var(--line);
+  }
+  .now-cell:last-child{border-right:none}
+  .now-lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--gold);
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .now-big{
+    font-size:48px;
+    font-weight:900;
+    letter-spacing:-1.5px;
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .now-big small{font-size:16px;color:var(--mute);font-weight:500;letter-spacing:0;margin-left:4px}
+  .now-mid{
+    font-size:18px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:-0.3px;
+    margin-bottom:4px;
+    line-height:1.1;
+  }
+  .now-text{
+    font-size:13px;
+    color:var(--mute);
+    line-height:1.5;
+  }
+  .now-text b{color:var(--text);font-weight:600}
+
+  .now-focus{
+    padding:20px 28px;
+    background:var(--gold-bg);
+    border-top:1px solid var(--gold-dim);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .now-focus-block .now-lbl{color:var(--gold);margin-bottom:6px}
+  .now-focus-block p{
+    font-size:13px;
+    color:var(--text);
+    line-height:1.5;
+  }
+  .now-focus-block p b{color:var(--gold);font-weight:700}
+
   /* BANNER */
   .banner{
     position:relative;
@@ -1333,6 +1442,9 @@
 
   /* ===== TABLET (1000px) ===== */
   @media (max-width:1000px){
+    .now-grid{grid-template-columns:1fr 1fr}
+    .now-grid .now-cell:first-child{grid-column:1/-1;border-right:none;border-bottom:1px solid var(--line)}
+    .now-focus{grid-template-columns:1fr;gap:14px}
     .vitals{grid-template-columns:repeat(3,1fr)}
     .ranks{grid-template-columns:repeat(3,1fr)}
     .achs,.alerts,.rules,.adds,.manifesto{grid-template-columns:repeat(2,1fr)}
@@ -1445,6 +1557,19 @@
     .mon-what{font-size:14px}
     .mon-how{font-size:12px}
 
+    .now-head{padding:14px 20px;flex-wrap:wrap;gap:8px}
+    .now-head-title{font-size:14px}
+    .now-head-tag{font-size:9px}
+    .now-head-right{font-size:9px;width:100%}
+    .now-grid{grid-template-columns:1fr}
+    .now-cell{padding:18px 20px;border-right:none;border-bottom:1px solid var(--line)}
+    .now-cell:last-child{border-bottom:none}
+    .now-big{font-size:36px}
+    .now-mid{font-size:15px}
+    .now-text{font-size:12px}
+    .now-focus{padding:18px 20px;grid-template-columns:1fr;gap:14px}
+    .now-focus-block p{font-size:12px}
+
     .rd-head{grid-template-columns:1fr;gap:16px;padding:20px}
     .rd-goal{border-left:none;border-top:1px solid var(--line);padding:16px 0 0;text-align:left}
     .rd-title{font-size:22px}
@@ -1520,11 +1645,10 @@
     <div class="logo">PANILHA<span>·</span>STNDRD</div>
     <ul class="nav-menu">
       <li><a href="#" class="active">DASHBOARD</a></li>
-      <li><a href="#rules">REGRAS</a></li>
+      <li><a href="#raceday" style="color:var(--gold)">🏁 PROVA</a></li>
       <li><a href="#races">PROVAS</a></li>
       <li><a href="#transform">TRANSFORM</a></li>
       <li><a href="#journey">JOURNEY</a></li>
-      <li><a href="#raceday" style="color:var(--gold)">🏁 PROVA</a></li>
       <li><a href="#diet">DIETA</a></li>
     </ul>
   </div>
@@ -1566,64 +1690,43 @@
     </div>
   </div>
 
-  <!-- MANIFESTO -->
-  <div class="manifesto">
-    <div class="mani-item">
-      <div class="mani-head">
-        <span class="mani-badge">01</span>
-        <span class="mani-title">Por adição</span>
+  <!-- NOW — bloco dinâmico -->
+  <div class="now" id="now">
+    <div class="now-head">
+      <div class="now-head-left">
+        <span class="now-head-tag">AGORA</span>
+        <span class="now-head-title">O que importa hoje</span>
       </div>
-      <p class="mani-text">Plano não corta alimento. Adiciona <b>água, vegetal, caminhada, sono</b>. O corpo faz o déficit sozinho, sem contabilidade.</p>
+      <span class="now-head-right" id="now-stamp">—</span>
     </div>
-    <div class="mani-item">
-      <div class="mani-head">
-        <span class="mani-badge">02</span>
-        <span class="mani-title">Flexibilidade sagrada</span>
-      </div>
-      <p class="mani-text"><b>Gelato 2×/semana</b> e <b>hambúrguer de sábado</b> são parte do plano. Não pagam com treino, não geram culpa, não entram na conta.</p>
-    </div>
-    <div class="mani-item">
-      <div class="mani-head">
-        <span class="mani-badge">03</span>
-        <span class="mani-title">Longo prazo</span>
-      </div>
-      <p class="mani-text">Meta é o que cabe na vida <b>pra sempre</b>. Visual de 10% BF sustentado > 8% BF sofrido. Sustentabilidade antes de estética.</p>
-    </div>
-  </div>
 
-  <!-- RULES SAGRADAS -->
-  <div class="sh" id="rules">
-    <div class="sh-left">
-      <span class="sh-num">00</span>
-      <span class="sh-title">Regras que não se tocam</span>
+    <div class="now-grid">
+      <div class="now-cell">
+        <div class="now-lbl">Próxima prova</div>
+        <div class="now-big" id="now-prova-days">—</div>
+        <div class="now-text" id="now-prova-info">—</div>
+      </div>
+      <div class="now-cell">
+        <div class="now-lbl">Fase atual</div>
+        <div class="now-mid" id="now-fase-name">—</div>
+        <div class="now-text" id="now-fase-period">—</div>
+      </div>
+      <div class="now-cell">
+        <div class="now-lbl">Hoje</div>
+        <div class="now-mid" id="now-day-name">—</div>
+        <div class="now-text" id="now-day-action">—</div>
+      </div>
     </div>
-    <span class="sh-right">Não-negociáveis</span>
-  </div>
 
-  <div class="rules">
-    <div class="rule">
-      <div class="rule-num">01</div>
-      <div class="rule-icon">+ FLEX</div>
-      <div class="rule-title">Gelato 2×/sem</div>
-      <div class="rule-desc">Parte do plano. Não é cheat, não é pecado, não paga com corrida. Come e segue.</div>
-    </div>
-    <div class="rule">
-      <div class="rule-num">02</div>
-      <div class="rule-icon">+ FLEX</div>
-      <div class="rule-title">Hambúrguer sábado</div>
-      <div class="rule-desc">Refeição livre fixa. 2 hambúrgueres, sem contar macro, sem compensar. É lei.</div>
-    </div>
-    <div class="rule">
-      <div class="rule-num">03</div>
-      <div class="rule-icon">- RIGIDEZ</div>
-      <div class="rule-title">Sem regime</div>
-      <div class="rule-desc">Zero contagem de kcal no dia a dia. Estrutura da Michelle roda no piloto automático.</div>
-    </div>
-    <div class="rule">
-      <div class="rule-num">04</div>
-      <div class="rule-icon">- BALANÇA</div>
-      <div class="rule-title">Foto > Peso</div>
-      <div class="rule-desc">Peso diário fora. Foto mensal, fita na cintura a cada 2 sem, roupa caindo. Só isso.</div>
+    <div class="now-focus">
+      <div class="now-focus-block">
+        <div class="now-lbl">Foco da semana</div>
+        <p id="now-focus-week">—</p>
+      </div>
+      <div class="now-focus-block">
+        <div class="now-lbl">Próxima ação</div>
+        <p id="now-focus-next">—</p>
+      </div>
     </div>
   </div>
 
@@ -1973,42 +2076,10 @@
     </div>
   </div>
 
-  <!-- POR ADIÇÃO -->
-  <div class="sh">
-    <div class="sh-left">
-      <span class="sh-num">05</span>
-      <span class="sh-title">Por adição</span>
-    </div>
-    <span class="sh-right">O que você ganha</span>
-  </div>
-
-  <div class="adds">
-    <div class="add">
-      <div class="add-plus">+</div>
-      <div class="add-title">Água antes da refeição</div>
-      <div class="add-desc">500ml antes do almoço e jantar. Saciedade natural, sem contar nada.</div>
-    </div>
-    <div class="add">
-      <div class="add-plus">+</div>
-      <div class="add-title">Vegetal extra</div>
-      <div class="add-desc">Uma porção a mais no almoço. Volume, fibra, saciedade — sem kcal.</div>
-    </div>
-    <div class="add">
-      <div class="add-plus">+</div>
-      <div class="add-title">Caminhada pós-jantar</div>
-      <div class="add-desc">15min três vezes na semana. NEAT que soma o mês inteiro.</div>
-    </div>
-    <div class="add">
-      <div class="add-plus">+</div>
-      <div class="add-title">Uma hora de sono</div>
-      <div class="add-desc">Regula fome, cortisol e recuperação. O ajuste mais forte do plano.</div>
-    </div>
-  </div>
-
   <!-- JOURNEY -->
   <div class="sh" id="journey">
     <div class="sh-left">
-      <span class="sh-num">06</span>
+      <span class="sh-num">05</span>
       <span class="sh-title">Journey</span>
     </div>
     <span class="sh-right">7 quests</span>
@@ -2084,7 +2155,7 @@
   <!-- ACHIEVEMENTS -->
   <div class="sh">
     <div class="sh-left">
-      <span class="sh-num">07</span>
+      <span class="sh-num">06</span>
       <span class="sh-title">Pilares</span>
     </div>
     <span class="sh-right">Os 3 eixos</span>
@@ -2136,7 +2207,7 @@
   <!-- DIET -->
   <div class="sh" id="diet">
     <div class="sh-left">
-      <span class="sh-num">08</span>
+      <span class="sh-num">07</span>
       <span class="sh-title">Dieta · Dia a Dia</span>
     </div>
     <span class="sh-right">Plano Michelle Ferrari · CRN 35014</span>
@@ -2527,106 +2598,134 @@
 
   </div>
 
-  <!-- MONITORING -->
-  <div class="sh">
-    <div class="sh-left">
-      <span class="sh-num">09</span>
-      <span class="sh-title">Tracking</span>
-    </div>
-    <span class="sh-right">Sem obsessão</span>
-  </div>
-
-  <div class="mon">
-    <div class="mon-row">
-      <div class="mon-freq">Mensal</div>
-      <div class="mon-what">Foto 4 ângulos</div>
-      <div class="mon-how">Mesmo horário, mesma luz, manhã em jejum. Compara com o mês anterior. Principal indicador.</div>
-    </div>
-    <div class="mon-row">
-      <div class="mon-freq">Quinzenal</div>
-      <div class="mon-what">Fita na cintura</div>
-      <div class="mon-how">Umbigo. Um número só. Sem balança, sem escala — é o metric mais honesto sem gatilho.</div>
-    </div>
-    <div class="mon-row">
-      <div class="mon-freq">Quando lembrar</div>
-      <div class="mon-what">Roupa caindo</div>
-      <div class="mon-how">Calça da cintura é o melhor termômetro. Camisa esticando no ombro e braço também conta.</div>
-    </div>
-    <div class="mon-row">
-      <div class="mon-freq">Mensal</div>
-      <div class="mon-what">Exames completos</div>
-      <div class="mon-how">Lipidograma, hepático, renal, hematócrito, ferritina, testo, E2. Inegociável no contexto atual.</div>
-    </div>
-    <div class="mon-row">
-      <div class="mon-freq">Diário sutil</div>
-      <div class="mon-what">Bem-estar</div>
-      <div class="mon-how">Sono, humor, energia, libido. Se qualquer um piora 2 sem seguidas, plano ajusta — independente do que a fita diz.</div>
-    </div>
-  </div>
-
-  <!-- ALERTS -->
-  <div class="sh">
-    <div class="sh-left">
-      <span class="sh-num">10</span>
-      <span class="sh-title">Alerts</span>
-    </div>
-    <span class="sh-right">Quando reagir</span>
-  </div>
-
-  <div class="alerts">
-
-    <div class="alt">
-      <div class="alt-head">
-        <div class="alt-title">Nada mudando</div>
-        <div class="alt-sub">4+ sem sem progresso</div>
-      </div>
-      <div class="alt-body">
-        <ul>
-          <li><span>Cintura parada</span><strong>+ 1 caminhada</strong></li>
-          <li><span>Força travando</span><strong>+ 1h sono</strong></li>
-          <li><span>Sem sensação</span><strong>revisar Michelle</strong></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="alt">
-      <div class="alt-head">
-        <div class="alt-title">Pausa pro médico</div>
-        <div class="alt-sub">Prioridade absoluta</div>
-      </div>
-      <div class="alt-body">
-        <ul>
-          <li><span>PA em jejum</span><strong>&gt; 140/90</strong></li>
-          <li><span>Hematócrito</span><strong>&gt; 52%</strong></li>
-          <li><span>Dor no peito</span><strong>PARAR</strong></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="alt">
-      <div class="alt-head">
-        <div class="alt-title">Mente pesando</div>
-        <div class="alt-sub">Volta do gatilho</div>
-      </div>
-      <div class="alt-body">
-        <ul>
-          <li><span>Culpa com comida</span><strong>stop plano</strong></li>
-          <li><span>Obsessão com foto</span><strong>pausar tracking</strong></li>
-          <li><span>Corrida virar castigo</span><strong>reavaliar tudo</strong></li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
 
 </div>
 </div>
 
 <!-- FOOTER -->
 <div class="foot">
-  <div>STNDRD · Ed. 02 · Construção sustentável</div>
+  <div>STNDRD · Ed. 03 · Atualização dinâmica · <a href="historico/regras-v1.html" style="color:var(--gold);text-decoration:none">Histórico</a></div>
   <div>@panilha · Manaus AM · 2026</div>
 </div>
+
+<script>
+/* ==========================================================
+   STNDRD · Lógica dinâmica do bloco AGORA
+   Recalcula contexto baseado em Date.now() — sem servidor.
+   ========================================================== */
+
+const PROVAS = [
+  { date:'2026-04-26', name:'5K Circuito das Estações', meta:'28:30', pace:'5:42/km' },
+  { date:'2026-05-17', name:'10K', meta:'62:00', pace:'6:12/km' }
+];
+
+const FASES = [
+  { start:'2026-03-02', end:'2026-04-19', name:'Base aeróbica',
+    period:'Mar — abr 19',
+    week:'Construção do motor. Volume crescente, qualidade variada.',
+    next:'Manter consistência: 3 corridas + 4 forças por semana.' },
+  { start:'2026-04-20', end:'2026-04-26', name:'Taper 5K',
+    period:'Microciclo 2/5 do macro 10K',
+    week:'Reforço de carbo na sex e sáb (+50g). Volume cai. Sem hambúrguer no jantar de sábado — move pro almoço.',
+    next:'Domingo 06h: 5K com meta 28:30. Ver briefing dedicado.' },
+  { start:'2026-04-27', end:'2026-05-04', name:'Recuperação 5K',
+    period:'Pós-prova · 1 semana',
+    week:'Volume leve, FC abaixo de 148. Força volta normal mas sessões ≤75min. Recuperação > performance.',
+    next:'Avaliar resultado do 5K e calibrar pace alvo do 10K.' },
+  { start:'2026-05-05', end:'2026-05-11', name:'Pico 10K',
+    period:'Semana mais carregada',
+    week:'1 sessão de qualidade (6×800m Z4) + 1 longão de 11–12km Z2 + 1 leve. Força mantém 4×.',
+    next:'Sábado 10/05: longão 11–12km. Sem força pesada no dia.' },
+  { start:'2026-05-12', end:'2026-05-17', name:'Taper 10K',
+    period:'Última semana',
+    week:'Volume cai 40%. Carbo +60g sex/sáb. Sexta off total. Sábado shake-out 3km.',
+    next:'Domingo 17/05 06h: 10K com meta 62:00.' },
+  { start:'2026-05-18', end:'2026-06-10', name:'Transição',
+    period:'Pós-prova · pré-recomp',
+    week:'Corrida cai pra 13 km/sem em 3 sessões curtas. Força vira protagonista (lower/push/pull/ombro).',
+    next:'Revisão com Michelle antes de 18/05 sobre macros da fase recomp.' },
+  { start:'2026-06-11', end:'2026-08-15', name:'Recomp + sustentação',
+    period:'Junho — agosto',
+    week:'Hipertrofia focada. Foto + fita mensal. Estrutura Michelle no piloto automático.',
+    next:'Foto base no dia 1° do mês. Mesma luz, 4 ângulos.' },
+  { start:'2026-08-16', end:'2099-12-31', name:'Sustentação',
+    period:'Permanente',
+    week:'Vida que cabe. Hambúrguer sábado, gelato meio de semana, exames mensais.',
+    next:'Refinamento contínuo. Sem pressão.' }
+];
+
+const DIAS = {
+  0: { name:'Domingo · OFF', action:'Descanso total. Sem treino. Estrutura alimentar flui sem pré/pós-treino.' },
+  1: { name:'Segunda · Musc 08h', action:'Musculação 08h. Café pré-treino e estrutura completa do dia.' },
+  2: { name:'Terça · Corrida 06h20', action:'Corrida cedo (jejum se sem tiros). Café pós-treino normal.' },
+  3: { name:'Quarta · Musc 08h', action:'Musculação 08h. Mesma estrutura da segunda.' },
+  4: { name:'Quinta · Corrida 06h20', action:'Corrida cedo. Estrutura igual à terça.' },
+  5: { name:'Sexta · Musc 08h', action:'Musculação 08h. Última força da semana antes do fim de semana.' },
+  6: { name:'Sábado · Musc 10h30 + Run 16h', action:'Dia duplo: musc cedo, corrida tarde. Hambúrguer livre no jantar.' }
+};
+
+function fmtDate(d) {
+  const meses = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const dias = ['dom','seg','ter','qua','qui','sex','sáb'];
+  return `${dias[d.getDay()]} ${d.getDate()} ${meses[d.getMonth()]}`;
+}
+
+function fmtStamp(d) {
+  return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()} · ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+}
+
+function diasEntre(a, b) {
+  return Math.ceil((b - a) / 86400000);
+}
+
+function update() {
+  const now = new Date();
+  document.getElementById('now-stamp').textContent = fmtStamp(now);
+
+  // Próxima prova
+  const proxima = PROVAS
+    .map(p => ({ ...p, dt: new Date(p.date + 'T06:00:00') }))
+    .filter(p => p.dt >= now)
+    .sort((a,b) => a.dt - b.dt)[0];
+
+  const provaDays = document.getElementById('now-prova-days');
+  const provaInfo = document.getElementById('now-prova-info');
+  if (proxima) {
+    const dias = diasEntre(now, proxima.dt);
+    if (dias === 0) {
+      provaDays.innerHTML = 'HOJE<small></small>';
+    } else {
+      provaDays.innerHTML = `${dias}<small>${dias === 1 ? 'dia' : 'dias'}</small>`;
+    }
+    provaInfo.innerHTML = `<b>${proxima.name}</b><br>Meta ${proxima.meta} · ${proxima.pace}`;
+  } else {
+    provaDays.textContent = '—';
+    provaInfo.textContent = 'Sem prova agendada. Foco em composição.';
+  }
+
+  // Fase atual
+  const fase = FASES.find(f => {
+    const s = new Date(f.start + 'T00:00:00');
+    const e = new Date(f.end + 'T23:59:59');
+    return now >= s && now <= e;
+  });
+
+  if (fase) {
+    document.getElementById('now-fase-name').textContent = fase.name;
+    document.getElementById('now-fase-period').textContent = fase.period;
+    document.getElementById('now-focus-week').innerHTML = fase.week;
+    document.getElementById('now-focus-next').innerHTML = fase.next;
+  }
+
+  // Hoje
+  const dia = DIAS[now.getDay()];
+  document.getElementById('now-day-name').textContent = fmtDate(now).toUpperCase();
+  document.getElementById('now-day-action').innerHTML = `<b>${dia.name.split(' · ')[1] || dia.name}</b><br>${dia.action}`;
+}
+
+update();
+setInterval(update, 60000); // recalcula a cada minuto
+</script>
 
 </body>
 </html>
