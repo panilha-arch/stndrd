@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STNDRD · Geladeira</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page{size:A4 portrait;margin:10mm}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{
+    background:#FFFFFF;
+    color:#0A0A0A;
+    font-family:'Inter',sans-serif;
+    font-size:11pt;
+    line-height:1.4;
+  }
+  body{padding:14mm 12mm}
+
+  /* Cabeçalho */
+  .header{
+    border-top:3px solid #000;
+    border-bottom:3px solid #000;
+    padding:8px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+  }
+  .logo{
+    font-weight:900;
+    font-size:18pt;
+    letter-spacing:3px;
+    text-transform:uppercase;
+  }
+  .logo span{color:#B8381E}
+  .meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9pt;
+    color:#666;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    text-align:right;
+  }
+  .meta b{color:#000;display:block;font-size:10pt}
+
+  /* Title bar */
+  .title-bar{
+    background:#0A0A0A;
+    color:#fff;
+    padding:10px 14px;
+    margin-bottom:14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+  }
+  .title-bar h1{
+    font-size:16pt;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  .title-bar .sub{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9pt;
+    color:#D4A574;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+  }
+
+  /* Two-column grid */
+  .grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:14px;
+    margin-bottom:14px;
+  }
+
+  /* Section box */
+  .box{
+    border:1.5px solid #000;
+    padding:0;
+  }
+  .box-head{
+    background:#0A0A0A;
+    color:#fff;
+    padding:6px 10px;
+    font-weight:800;
+    font-size:10pt;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .box-head .badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:8pt;
+    color:#D4A574;
+    letter-spacing:1.5px;
+  }
+
+  /* Estrutura refeições */
+  .meals-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:9.5pt;
+  }
+  .meals-table tr{border-bottom:1px solid #DDD}
+  .meals-table tr:last-child{border-bottom:none}
+  .meals-table td{padding:6px 10px;vertical-align:top}
+  .meals-table .time{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    color:#B8381E;
+    width:50px;
+    font-size:9pt;
+  }
+  .meals-table .name{
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.3px;
+    width:90px;
+    font-size:9pt;
+  }
+  .meals-table .desc{
+    color:#444;
+    font-size:9pt;
+    line-height:1.3;
+  }
+  .meals-table .desc b{color:#000}
+
+  /* 3 Ajustes — destaque */
+  .ajuste{
+    padding:8px 12px;
+    border-bottom:1px solid #DDD;
+  }
+  .ajuste:last-child{border-bottom:none}
+  .ajuste-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:3px;
+  }
+  .ajuste-num{
+    background:#B8381E;
+    color:#fff;
+    font-family:'JetBrains Mono',monospace;
+    font-size:8pt;
+    padding:2px 7px;
+    font-weight:700;
+    letter-spacing:1px;
+  }
+  .ajuste-when{
+    font-family:'JetBrains Mono',monospace;
+    font-size:8pt;
+    color:#666;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .ajuste-title{
+    font-weight:800;
+    text-transform:uppercase;
+    font-size:10pt;
+    letter-spacing:0.3px;
+    margin:4px 0 2px;
+  }
+  .ajuste-desc{
+    font-size:9pt;
+    color:#444;
+    line-height:1.35;
+  }
+  .ajuste-desc b{color:#000}
+
+  /* Alertas — 5 marcadores */
+  .alerts-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+  }
+  .alert{
+    padding:7px 10px;
+    border-right:1px solid #DDD;
+    border-bottom:1px solid #DDD;
+  }
+  .alert:nth-child(2n){border-right:none}
+  .alert:nth-last-child(-n+2){border-bottom:none}
+  .alert-when{
+    font-family:'JetBrains Mono',monospace;
+    font-size:7.5pt;
+    color:#B8381E;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-weight:700;
+    margin-bottom:2px;
+  }
+  .alert-title{
+    font-weight:700;
+    font-size:9pt;
+    line-height:1.2;
+    margin-bottom:3px;
+  }
+  .alert-desc{
+    font-size:8pt;
+    color:#555;
+    line-height:1.3;
+  }
+
+  /* Rules ancora */
+  .rules-bar{
+    background:#F5F1E8;
+    border:2px solid #0A0A0A;
+    padding:10px 14px;
+    margin-bottom:12px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+  }
+  .rule{
+    border-right:1px solid #BBB;
+    padding-right:10px;
+  }
+  .rule:last-child{border-right:none}
+  .rule-icon{
+    font-family:'JetBrains Mono',monospace;
+    font-size:8pt;
+    color:#B8381E;
+    font-weight:700;
+    letter-spacing:1.5px;
+    margin-bottom:2px;
+  }
+  .rule-text{
+    font-size:9pt;
+    line-height:1.3;
+    font-weight:600;
+  }
+
+  /* Calendário datas */
+  .dates{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border:2px solid #000;
+    margin-bottom:12px;
+  }
+  .date-cell{
+    padding:8px 10px;
+    border-right:1px solid #DDD;
+    text-align:center;
+  }
+  .date-cell:last-child{border-right:none}
+  .date-cell.highlight{background:#FFF5F5}
+  .date-when{
+    font-family:'JetBrains Mono',monospace;
+    font-size:7.5pt;
+    color:#666;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .date-cell.highlight .date-when{color:#B8381E;font-weight:700}
+  .date-event{
+    font-weight:800;
+    font-size:11pt;
+    margin-top:3px;
+  }
+  .date-detail{
+    font-size:8pt;
+    color:#666;
+    margin-top:2px;
+    line-height:1.2;
+  }
+
+  /* Footer */
+  .footer{
+    text-align:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:7pt;
+    color:#999;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin-top:14px;
+    padding-top:8px;
+    border-top:1px solid #999;
+  }
+
+  /* Print optimizations */
+  @media print{
+    body{padding:0}
+    .header{margin-top:0}
+    /* remove cores leves */
+    .ajuste-num{background:#000 !important;color:#fff !important}
+    .title-bar{background:#000 !important;color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .box-head{background:#000 !important;color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .rules-bar{background:#F5F1E8 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .date-cell.highlight{background:#FFF5F5 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">PANILHA<span>·</span>STNDRD</div>
+  <div class="meta">
+    <b>Versão de geladeira</b>
+    Atualizado 26/04/2026
+  </div>
+</div>
+
+<div class="title-bar">
+  <h1>Plano · Hybrid Program · Construção sustentável</h1>
+  <div class="sub">10K · 17 mai · meta 58:30</div>
+</div>
+
+<!-- Regras âncora -->
+<div class="rules-bar">
+  <div class="rule">
+    <div class="rule-icon">⊕ ADIÇÃO</div>
+    <div class="rule-text">Não corta — adiciona água, salada, sono.</div>
+  </div>
+  <div class="rule">
+    <div class="rule-icon">⊕ FLEX</div>
+    <div class="rule-text">Hambúrguer sábado fica. Gelato 2×/sem fica.</div>
+  </div>
+  <div class="rule">
+    <div class="rule-icon">⊖ BALANÇA</div>
+    <div class="rule-text">Sem peso diário. Fita semanal e Garmin.</div>
+  </div>
+  <div class="rule">
+    <div class="rule-icon">⊖ REGIME</div>
+    <div class="rule-text">Zero contagem de kcal. Estrutura roda no automático.</div>
+  </div>
+</div>
+
+<!-- Grid principal: refeições + ajustes -->
+<div class="grid">
+
+  <!-- Estrutura -->
+  <div class="box">
+    <div class="box-head">
+      Estrutura básica · referência diária
+      <span class="badge">Plano Michelle</span>
+    </div>
+    <table class="meals-table">
+      <tr>
+        <td class="time">07:00</td>
+        <td class="name">Café musc</td>
+        <td class="desc">1 ovo + 3 claras + pão francês + 40g cottage + chia + café + fruta</td>
+      </tr>
+      <tr>
+        <td class="time">10:30</td>
+        <td class="name">Lanche</td>
+        <td class="desc">1 dose whey + 200ml água + 150g fruta</td>
+      </tr>
+      <tr>
+        <td class="time">12:00</td>
+        <td class="name">Almoço</td>
+        <td class="desc">Salada + mix fibras + 150g legumes + 150g arroz integral + 80g feijão + <b>150g proteína</b> + azeite</td>
+      </tr>
+      <tr>
+        <td class="time">17:00</td>
+        <td class="name">Lanche</td>
+        <td class="desc">Pão integral + 100g frango/atum + 40g cottage + chia</td>
+      </tr>
+      <tr>
+        <td class="time">20:30</td>
+        <td class="name">Jantar</td>
+        <td class="desc">Igual almoço + fruta (mamão/abacaxi/kiwi)</td>
+      </tr>
+      <tr>
+        <td class="time">21:30</td>
+        <td class="name">Ceia</td>
+        <td class="desc">170ml iogurte zero açúcar</td>
+      </tr>
+      <tr>
+        <td class="time">Ter/Qui</td>
+        <td class="name">Pré-corrida</td>
+        <td class="desc">5h: jejum + café (sem tiros) · com tiros: 1 banana ou suco. Intra: 1 gel Dobro + Liquidz</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Ajustes -->
+  <div class="box">
+    <div class="box-head">
+      3 Ajustes ativos · sem nutri
+      <span class="badge">Pré-10K</span>
+    </div>
+
+    <div class="ajuste">
+      <div class="ajuste-head">
+        <span class="ajuste-num">01</span>
+        <span class="ajuste-when">Domingo · OFF</span>
+      </div>
+      <div class="ajuste-title">Carbo reduzido</div>
+      <div class="ajuste-desc">Almoço e jantar: <b>1,5 col. servir</b> de arroz/batata (em vez de 3). Vegetal de 150g pra <b>250g</b>. Proteína igual. <b>500ml água</b> antes da refeição.</div>
+    </div>
+
+    <div class="ajuste">
+      <div class="ajuste-head">
+        <span class="ajuste-num">02</span>
+        <span class="ajuste-when">Todos os dias</span>
+      </div>
+      <div class="ajuste-title">Volume + hidratação</div>
+      <div class="ajuste-desc"><b>+1 porção de salada</b> no almoço e no jantar. <b>500ml de água</b> antes das refeições principais. Não tira nada — só adiciona saciedade.</div>
+    </div>
+
+    <div class="ajuste">
+      <div class="ajuste-head">
+        <span class="ajuste-num">03</span>
+        <span class="ajuste-when">Sáb 09–16 mai</span>
+      </div>
+      <div class="ajuste-title">Sábado pré-10K</div>
+      <div class="ajuste-desc">Refeição livre: <b>1 hambúrguer só</b> em vez de 2, sem batata frita. Volta pros 2 nas outras semanas.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Datas -->
+<div class="dates">
+  <div class="date-cell">
+    <div class="date-when">Conluído</div>
+    <div class="date-event">5K — 27:49</div>
+    <div class="date-detail">26 abr · top 8% · 23º categoria</div>
+  </div>
+  <div class="date-cell highlight">
+    <div class="date-when">Próxima</div>
+    <div class="date-event">10K — sub-58:30</div>
+    <div class="date-detail">17 mai · pace 5:51</div>
+  </div>
+  <div class="date-cell">
+    <div class="date-when">Marco</div>
+    <div class="date-event">Jun — 96kg / 11% BF</div>
+    <div class="date-detail">Linha central começa a marcar</div>
+  </div>
+  <div class="date-cell">
+    <div class="date-when">Pico</div>
+    <div class="date-event">Ago — 95kg / 10% BF</div>
+    <div class="date-detail">Look "grande e seco" sustentável</div>
+  </div>
+</div>
+
+<!-- Marcadores -->
+<div class="box">
+  <div class="box-head">
+    Marcadores de alerta · qualquer um aparecer = para os ajustes
+    <span class="badge">Sem nutri</span>
+  </div>
+  <div class="alerts-grid">
+    <div class="alert">
+      <div class="alert-when">Garmin · HRV</div>
+      <div class="alert-title">Status cai pra desequilibrado/baixo 5 dias seguidos</div>
+      <div class="alert-desc">Hoje em 62ms equilibrado. Se cair = corpo sob estresse, ajustes pesando.</div>
+    </div>
+    <div class="alert">
+      <div class="alert-when">Garmin · Body Battery</div>
+      <div class="alert-title">Acorda com BB &lt;30 três dias seguidos</div>
+      <div class="alert-desc">Sono não está recuperando. Combinado sono ruim + déficit é crítico.</div>
+    </div>
+    <div class="alert">
+      <div class="alert-when">Treino</div>
+      <div class="alert-title">Performance caindo 2 sessões seguidas</div>
+      <div class="alert-desc">Pace pior 2 corridas seguidas ou carga caindo. Déficit demais pro contexto.</div>
+    </div>
+    <div class="alert">
+      <div class="alert-when">Cintura</div>
+      <div class="alert-title">Não baixa em 3 semanas apesar dos ajustes</div>
+      <div class="alert-desc">Sono é o teto. Conversa com médico — TSH, cortisol, vit D.</div>
+    </div>
+    <div class="alert" style="grid-column:1/-1;border-bottom:none">
+      <div class="alert-when" style="color:#000">⚠ MENTAL · CRÍTICO</div>
+      <div class="alert-title">Vontade de cortar mais ou contar tudo o que come</div>
+      <div class="alert-desc">Volta do gatilho. Para tudo, volta pra estrutura original. Buscar apoio profissional ASAP.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  STNDRD · Painel de geladeira · panilha-arch.github.io/stndrd
+</div>
+
+</body>
+</html>
